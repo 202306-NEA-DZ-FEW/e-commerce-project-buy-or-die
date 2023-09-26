@@ -1,5 +1,5 @@
 export async function fetcher(apiRoute) {
-  const url = process.env.API_URL + apiRoute
+  const url = "https://dummyjson.com/" + apiRoute
 
   try {
     const response = await fetch(url)
