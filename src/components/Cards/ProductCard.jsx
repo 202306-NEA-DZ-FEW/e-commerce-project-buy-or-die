@@ -3,18 +3,13 @@ import { fetcher } from "@/Utils/API"
 import Link from "next/link"
 import StarRating from "./StarRating"
 
-const ProductCard = () => {
-  const [data, setData] = useState(null)
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetcher("")
-      setData(data)
-    }
-    console.log(data)
-
-    fetchData()
-  }, [])
-
+const ProductCard = ({
+  thumbnail,
+  price,
+  discountPercentage,
+  title,
+  rating,
+}) => {
   return (
     <>
       <div className="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
@@ -24,36 +19,30 @@ const ProductCard = () => {
         >
           <img
             className="hover:scale-125 transition-transform duration-500"
-            src={data?.products[0].thumbnail}
+            src={thumbnail}
             alt="Product Thumbnail"
           />
-          <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">
-            {data?.products[0].discountPercentage}%
+          <span className="absolute top-0 left-0 m-1 rounded-full bg-red-600 px-2 text-center text-sm font-medium text-white origin-bottom -rotate-12">
+            {discountPercentage}%
           </span>
         </Link>
         <div className="mt-4 px-5 pb-5">
           <Link href="#">
-            <h5 className="text-xl tracking-tight text-slate-900">
-              {data?.products[0].title}
-            </h5>
+            <h5 className="text-xl tracking-tight text-slate-900">{title}</h5>
           </Link>
           <div className="mt-2 mb-5 flex items-center justify-between">
             <p>
               <span className="text-3xl font-bold text-slate-900">
-                ${data?.products[0].price}
+                ${price}
               </span>
-              <span className="text-sm text-slate-900 line-through">
-                $
-                {(
-                  data?.products[0].price /
-                  (1 - data?.products[0].discountPercentage / 100)
-                ).toFixed(2)}
+              <span className="text-sm text-red-600 line-through">
+                ${(price / (1 - discountPercentage / 100)).toFixed(2)}
               </span>
             </p>
             <div className="flex items-center">
-              <StarRating rating={data?.products[0].rating} />
+              <StarRating rating={rating} />
               <span className="mr-2 ml-3 rounded bg-yellow-200 px-2.5 py-0.5 text-xs font-semibold">
-                {data?.products[0].rating}
+                {rating}
               </span>
             </div>
           </div>
