@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { fetcher } from "@/Utils/API"
-import Link from "next/link"
+
 import StarRating from "./StarRating"
 
 const ProductCard = ({
@@ -11,7 +10,7 @@ const ProductCard = ({
   rating,
 }) => {
   return (
-    <>
+    <div className="w-full">
       <div className="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
         <div className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl">
           <img
@@ -62,7 +61,7 @@ const ProductCard = ({
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
