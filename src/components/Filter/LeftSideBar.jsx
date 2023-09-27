@@ -2,6 +2,7 @@ import React from "react"
 import { useState, useEffect } from "react"
 import { fetcher } from "@/Utils/API"
 import { useRouter } from "next/router"
+import Link from "next/link"
 
 const LeftSideBar = () => {
   const [isOpen, setIsOpen] = useState(true)
@@ -79,6 +80,11 @@ const LeftSideBar = () => {
                     >
                       categories :
                     </h1>
+                    <Link href={`/products`}>
+                      <button class="text-base font-semibold leading-6 text-gray-900">
+                        All
+                      </button>
+                    </Link>
                     {data?.map((category, index) => (
                       <>
                         <ul>

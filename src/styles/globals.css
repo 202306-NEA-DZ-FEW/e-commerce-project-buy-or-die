@@ -24,6 +24,8 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  margin-right: 6%;
+  margin-left: 1.5%;
 }
 
 .h-full {
