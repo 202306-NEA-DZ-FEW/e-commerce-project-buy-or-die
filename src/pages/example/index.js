@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react"
 import ProductCard from "@/components/Cards/ProductCard"
 import { fetcher } from "@/Utils/API"
+
 import HomeCard from "@/components/Cards/HomeCards"
+
 
 export default function Example() {
   const [data, setData] = useState(null)
@@ -25,6 +27,7 @@ export default function Example() {
         discountPercentage={data?.products[0].discountPercentage}
         thumbnail={data?.products[0].thumbnail}
       />
+      <RandomImages />
     </main>
   )
 }
