@@ -1,6 +1,9 @@
 import React, { useState } from "react"
 
-export default function HomeCard({ imageUrls }) {
+import HomeButton from "./HomeButton"
+
+export default function HomeCard() {
+
   const [activeSlide, setActiveSlide] = useState(0)
 
   const handleSlideChange = (slideIndex) => {
@@ -16,109 +19,103 @@ export default function HomeCard({ imageUrls }) {
   }
 
   return (
-    <div>
-      <div className="w-screen h-screen">
-        <div className="relative" id="relative">
+
+    <div style={{ padding: "10px", width: "107%" }}>
+      <div>
+        <div style={{ right: "1%" }} className="relative" id="relative">
           <header>
             <div
+              className="absolute z-30 transform -translate-x-1/2 -translate-y-1/2"
+              style={{ top: "63%", left: "8%" }}
+            >
+              <HomeButton />
+            </div>
+            <div
+
               id="indicators-carousel"
               className="relative"
               data-carousel="static"
             >
-              <div className="overflow-hidden relative h-64 md:h-96">
+
+              <div
+                className="overflow-hidden relative"
+                style={{ height: "450px" }}
+              >
+
                 <div
                   className={`duration-700 ease-in-out absolute inset-0 transition-all transform ${
                     activeSlide === 0 ? "translate-x-0" : "-translate-x-full"
                   }`}
                 >
-                  {imageUrls && (
-                    <img
-                      className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
-                      src={imageUrls[0]}
-                      alt="Image 1"
-                    />
-                  )}
 
-                  <div className="absolute top-1/2 lg:left-1/3 md:h-1/4 left-1/4 text-emerald-500 font-bold md:text-4xl sm:text-2xl text-center">
-                    Fast & Easy Shopping
-                  </div>
+                  <img
+                    className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
+                    src="/images/bb.jpg"
+                    alt="Image 1"
+                  />
+
                 </div>
                 <div
                   className={`duration-700 ease-in-out absolute inset-0 transition-all transform ${
                     activeSlide === 1 ? "translate-x-0" : "-translate-x-full"
                   }`}
                 >
-                  {imageUrls && (
-                    <img
-                      className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
-                      src={imageUrls[1]}
-                      alt="Image 2"
-                    />
-                  )}
 
-                  <div className="absolute top-1/2 lg:left-1/3 md:h-1/4 left-1/4 text-emerald-500 font-bold md:text-4xl sm:text-2xl text-center">
-                    What you are Looking for?
-                  </div>
+                  <img
+                    className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
+                    src="/images/nn.png"
+                    alt="Image 2"
+                  />
+
                 </div>
                 <div
                   className={`duration-700 ease-in-out absolute inset-0 transition-all transform ${
                     activeSlide === 2 ? "translate-x-0" : "-translate-x-full"
                   }`}
                 >
-                  {imageUrls && (
-                    <img
-                      className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
-                      src={imageUrls[2]}
-                      alt="Image 3"
-                    />
-                  )}
 
-                  <div className="absolute top-1/2 lg:left-1/3 md:h-1/4 left-1/4 text-emerald-500 font-bold md:text-4xl sm:text-2xl text-center">
-                    Satisfied Customers
-                  </div>
+                  <img
+                    className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
+                    src="/images/ww.jpg"
+                    alt="Image 3"
+                  />
+
                 </div>
                 <div
                   className={`duration-700 ease-in-out absolute inset-0 transition-all transform ${
                     activeSlide === 3 ? "translate-x-0" : "-translate-x-full"
                   }`}
                 >
-                  {imageUrls && (
-                    <img
-                      className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
-                      src={imageUrls[3]}
-                      alt="Image 4"
-                    />
-                  )}
 
-                  <div className="absolute top-1/2 lg:left-1/3 md:h-1/4 left-1/4 text-emerald-500 font-bold md:text-4xl sm:text-2xl text-center">
-                    We Got What You Need
-                  </div>
+                  <img
+                    className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
+                    src="/images/3dyFAn.webp"
+                    alt="Image 4"
+                  />
+
+
                 </div>
                 <div
                   className={`duration-700 ease-in-out absolute inset-0 transition-all transform ${
                     activeSlide === 4 ? "translate-x-0" : "-translate-x-full"
                   }`}
                 >
-                  {imageUrls && (
-                    <img
-                      className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
-                      src={imageUrls[4]}
-                      alt="Image 5"
-                    />
-                  )}
 
-                  <div className="absolute top-1/2 lg:left-1/3 md:h-1/4 left-1/4 text-emerald-500 font-bold md:text-4xl sm:text-2xl text-center">
-                    Best Deals Between Your Hands
-                  </div>
+                  <img
+                    className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
+                    src="/images/4902587.jpg"
+                    alt="Image 5"
+                  />
                 </div>
               </div>
-              <div className="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
+              <div className="flex absolute bottom-5 left-1/2 z-30 space-x-3 transform -translate-x-1/2">
                 <button
                   type="button"
-                  className={`w-3 h-3 rounded-full ${
+                  className={`w-3 h-3 cursor-none rounded-full ${
                     activeSlide === 0
                       ? "bg-white"
-                      : "bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800"
+                      : "bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-green-800"
+
                   }`}
                   aria-current={activeSlide === 0 ? "true" : "false"}
                   aria-label="Slide 1"
@@ -127,10 +124,12 @@ export default function HomeCard({ imageUrls }) {
                 ></button>
                 <button
                   type="button"
-                  className={`w-3 h-3 rounded-full ${
+
+                  className={`w-3 h-3 cursor-none rounded-full ${
                     activeSlide === 1
                       ? "bg-white"
-                      : "bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800"
+                      : "bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-green-800"
+
                   }`}
                   aria-current={activeSlide === 1 ? "true" : "false"}
                   aria-label="Slide 2"
@@ -139,10 +138,12 @@ export default function HomeCard({ imageUrls }) {
                 ></button>
                 <button
                   type="button"
-                  className={`w-3 h-3 rounded-full ${
+
+                  className={`w-3 h-3 cursor-none rounded-full ${
                     activeSlide === 2
                       ? "bg-white"
-                      : "bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800"
+                      : "bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-green-800"
+
                   }`}
                   aria-current={activeSlide === 2 ? "true" : "false"}
                   aria-label="Slide 3"
@@ -151,10 +152,12 @@ export default function HomeCard({ imageUrls }) {
                 ></button>
                 <button
                   type="button"
-                  className={`w-3 h-3 rounded-full ${
+
+                  className={`w-3 h-3 cursor-none rounded-full ${
                     activeSlide === 3
                       ? "bg-white"
-                      : "bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800"
+                      : "bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-green-800"
+
                   }`}
                   aria-current={activeSlide === 3 ? "true" : "false"}
                   aria-label="Slide 4"
@@ -163,10 +166,12 @@ export default function HomeCard({ imageUrls }) {
                 ></button>
                 <button
                   type="button"
-                  className={`w-3 h-3 rounded-full ${
+
+                  className={`w-3 h-3 cursor-none rounded-full ${
                     activeSlide === 4
                       ? "bg-white"
-                      : "bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800"
+                      : "bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-green-800"
+
                   }`}
                   aria-current={activeSlide === 4 ? "true" : "false"}
                   aria-label="Slide 5"
@@ -176,13 +181,17 @@ export default function HomeCard({ imageUrls }) {
               </div>
               <button
                 type="button"
-                className="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+
+                className="flex absolute top-0 left-0 z-10 justify-start items-center px-4 h-full cursor-pointer group focus:outline-none"
+
                 data-carousel-prev=""
                 onClick={handlePrevSlide}
               >
                 <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                   <svg
-                    className="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
+
+                    className="w-5 h-5 text-white sm:w-6 sm:h-6  dark:text-gray-800"
+
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -200,7 +209,9 @@ export default function HomeCard({ imageUrls }) {
               </button>
               <button
                 type="button"
-                className="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+
+                className="flex absolute top-0 right-0 z-10 justify-end items-center px-4 h-full cursor-pointer group focus:outline-none"
+
                 data-carousel-next=""
                 onClick={handleNextSlide}
               >
