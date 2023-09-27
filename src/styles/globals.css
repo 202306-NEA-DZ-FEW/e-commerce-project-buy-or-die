@@ -17,17 +17,6 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-  margin-right: 6%;
-  margin-left: 1.5%;
-}
-
-.h-full {
-  width: 70%;
+  background-color: #efefef;
+  margin-right: 4%;
 }
