@@ -10,7 +10,7 @@ const ProductCard = ({
   rating,
 }) => {
   return (
-    <div className="w-full">
+    <div className="w-full max-w-xs transition duration-300 ease-in-out hover:scale-110">
       <div className="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
         <div className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl">
           <img
@@ -42,7 +42,7 @@ const ProductCard = ({
               </span>
             </div>
           </div>
-          <div className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300">
+          <div className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300 cursor-pointer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="mr-2 h-6 w-6"
