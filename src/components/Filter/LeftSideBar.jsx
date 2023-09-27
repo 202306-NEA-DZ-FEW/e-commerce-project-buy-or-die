@@ -4,8 +4,8 @@ import { fetcher } from "@/Utils/API"
 import { useRouter } from "next/router"
 import Link from "next/link"
 
-const LeftSideBar = () => {
-  const [isOpen, setIsOpen] = useState(true)
+function LeftSideBar() {
+  const [isOpen, setIsOpen] = useState(false)
   const [data, setData] = useState(null)
   const router = useRouter()
   const [selectedCategory, setSelectedCategory] = useState(null)
@@ -18,13 +18,6 @@ const LeftSideBar = () => {
     fetchData()
   }, [])
 
-  const handleClose = () => {
-    setIsOpen(false)
-  }
-  if (!isOpen) {
-    return null
-  }
-
   const handleCategoryClick = (category) => {
     router.push({
       pathname: router.pathname,
@@ -33,79 +26,55 @@ const LeftSideBar = () => {
     setSelectedCategory(category)
   }
 
+  const toggleDrawer = () => {
+    setIsOpen(!isOpen)
+  }
+
   return (
     <div>
-      <div
-        class="relative z-10"
-        aria-labelledby="slide-over-title"
-        role="dialog"
-        aria-modal="true"
+      <button
+        onClick={toggleDrawer}
+        className="fixed right-4 bottom-4 z-50 p-2 bg-gray-800 text-white rounded-full"
       >
-        produc
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
-        <div class="fixed inset-0 overflow-hidden">
-          <div class=" absolute inset-0 overflow-hidden">
-            <div class=" pointer-events-none fixed inset-y-0 left-0 flex ">
-              <div class="pointer-events-auto relative w-screen max-w-md">
-                <div class="absolute right-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4">
-                  <button
-                    type="button"
-                    onClick={handleClose}
-                    class="relative rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
-                  >
-                    <span class="absolute -inset-2.5"></span>
-                    <span class="sr-only">Close panel</span>
-                    <svg
-                      class="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
-                </div>
+        {isOpen ? "Close" : "Open"} Filter
+      </button>
 
-                <div class="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
-                  <div class="px-4 sm:px-6">
-                    <h1
-                      class="text-base font-bold leading-6 text-gray-900"
-                      id="slide-over-title"
-                    >
-                      categories :
-                    </h1>
-                    <Link href={`/products`}>
-                      <button class="text-base font-semibold leading-6 text-gray-900">
-                        All
-                      </button>
-                    </Link>
-                    {data?.map((category, index) => (
-                      <>
-                        <ul>
-                          <button
-                            class="text-base font-semibold leading-6 text-gray-900"
-                            onClick={() => handleCategoryClick(category)}
-                            key={index}
-                          >
-                            {category}
-                          </button>
-                        </ul>
-                      </>
-                    ))}
-                  </div>
-                  <div class="relative mt-6 flex-1 px-4 sm:px-6"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div
+        className={`fixed top-0 left-0 h-full w-64 bg-gray-900 text-white transform transition-transform z-20 ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="p-4">
+          <h1 className="text-2xl font-semibold">Filter</h1>
+          <ul className="mt-4">
+            <Link href={`/products`}>
+              <button class="text-base font-semibold leading-6 text-white-900">
+                All
+              </button>
+            </Link>
+            {data?.map((category, index) => (
+              <>
+                <li>
+                  <button
+                    class="text-base font-semibold leading-6 text-white-900"
+                    onClick={() => handleCategoryClick(category)}
+                    key={index}
+                  >
+                    {category}
+                  </button>
+                </li>
+              </>
+            ))}
+          </ul>
         </div>
       </div>
+
+      {isOpen && (
+        <div
+          className="z-10 fixed top-0 left-0 w-full h-full bg-black opacity-50 "
+          onClick={toggleDrawer}
+        ></div>
+      )}
     </div>
   )
 }
