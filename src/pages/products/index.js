@@ -7,6 +7,7 @@ import Link from "next/link"
 import Sidebar from "@/components/Filter/SideBar"
 import PriceFilter from "@/components/Filter/PriceFilter"
 import Pagination from "@/components/Pagination/Pagination"
+import ColorList from "@/components/Filter/Color"
 
 const Products = ({ produ }) => {
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false)
@@ -135,6 +136,7 @@ const Products = ({ produ }) => {
                 onRangeChange={handleRangeChange}
               />
             </div>
+            <ColorList className="bg-gray-300 p-10 h-full " />
           </div>
         </div>
         <div class="col-span-2 md:col-span-2 lg:col-span-3 mt-10 ">
