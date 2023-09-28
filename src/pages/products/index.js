@@ -4,6 +4,8 @@ import { useRouter } from "next/router"
 import { fetcher } from "@/Utils/API"
 import ProductCard from "@/components/Cards/ProductCard"
 import Link from "next/link"
+import Sidebar from "@/components/Filter/SideBar"
+import PriceFilter from "@/components/Filter/PriceFilter"
 
 const Products = ({ produ }) => {
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false)
@@ -12,6 +14,7 @@ const Products = ({ produ }) => {
   const router = useRouter()
   const { category, filter } = router.query
   const filterDrawerRef = useRef(null)
+  const [priceRange, setPriceRange] = useState([0, 1000])
 
   const handleCategoryClick = (filterType) => {
     let updatedQuery = { pathname: router.pathname }
@@ -73,7 +76,7 @@ const Products = ({ produ }) => {
   }
 
   if (category) {
-    filteredProducts = produ.products.filter(
+    filteredProducts = filteredProducts.filter(
       (prods) => prods.category === category,
     )
 
@@ -91,8 +94,18 @@ const Products = ({ produ }) => {
     }
   }
 
+  filteredProducts = filteredProducts.filter(
+    (product) =>
+      product.price >= priceRange[0] && product.price <= priceRange[1],
+  )
+
   const toggleFilterDrawer = () => {
     setIsFilterDrawerOpen(!isFilterDrawerOpen)
+  }
+
+  const handleRangeChange = (newRange) => {
+    console.log(newRange)
+    setPriceRange(newRange)
   }
 
   return (
@@ -101,7 +114,18 @@ const Products = ({ produ }) => {
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         <div class="col-span-2 md:col-span-1 lg:col-span-0 ">
-          <div class="bg-gray-300 p-10 h-full ">Sidebar</div>
+          <div class="bg-gray-300 p-10 h-full ">
+            Sidebar
+            <Sidebar />
+            <div className="flex">
+              <PriceFilter
+                min={0}
+                max={1000}
+                range={priceRange}
+                onRangeChange={handleRangeChange}
+              />
+            </div>
+          </div>
         </div>
         <div class="col-span-2 md:col-span-2 lg:col-span-3 mt-10 ">
           <div className="container grid grid-cols-2 p-2 text-black rounded-full ">
