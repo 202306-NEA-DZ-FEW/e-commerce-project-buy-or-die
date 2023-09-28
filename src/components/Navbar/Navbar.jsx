@@ -1,7 +1,30 @@
 import React from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { signOut } from "firebase/auth"
+import { auth } from "@/Utils/firebase"
+import { useState, useEffect } from "react"
+import { onAuthStateChanged } from "firebase/auth"
+
 const NavBar = () => {
+  const [user, setUser] = useState(null)
+  const handleSingOut = async () => {
+    await signOut(auth)
+  }
+
+  useEffect(() => {
+    const logged = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user)
+      } else {
+        setUser(null)
+      }
+    })
+    return () => {
+      logged()
+    }
+  }, [])
+
   return (
     <nav className="bg-transparent p-4 text-black">
       <div className="container mx-auto flex justify-between items-center">
@@ -35,6 +58,25 @@ const NavBar = () => {
           <button>
             <Link href="/cart">Cart</Link>
           </button>
+          {user ? (
+            <div className="flex flex-row gap-4 container text-center flex items-center font-bold ">
+              <button
+                onClick={handleSingOut}
+                type="submit"
+                className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none"
+              >
+                Logout
+              </button>{" "}
+              {`${user.displayName}`}{" "}
+            </div>
+          ) : (
+            <button
+              type="submit"
+              className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none"
+            >
+              Login
+            </button>
+          )}
         </div>
       </div>
     </nav>
