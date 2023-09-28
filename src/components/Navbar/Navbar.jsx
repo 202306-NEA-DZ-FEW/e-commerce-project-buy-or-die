@@ -16,9 +16,7 @@ const NavBar = () => {
           <li>
             <Link href="/products">Products</Link>
           </li>
-          <li>
-            <Link href="/cart">Cart</Link>
-          </li>
+
           <li>
             <Link href="/account">Account</Link>
           </li>
@@ -33,6 +31,9 @@ const NavBar = () => {
           />
           <button className="bg-transparent text-black px-4 py-2 rounded-full">
             <img src="/akar-icons_search.svg" width={20} height={20} />
+          </button>
+          <button>
+            <Link href="/cart">Cart</Link>
           </button>
         </div>
       </div>
