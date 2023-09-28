@@ -1,6 +1,9 @@
 import { useState } from "react"
-export default function Product({ data }) {
+import StarRating from "@/components/Cards/StarRating"
+
+export default function ProductPage({ data }) {
   const [mainImage, setmainImage] = useState(0)
+  console.log(data)
   return (
     <div style={{ width: "100%", height: "100%", position: "relative" }}>
       <div>
@@ -206,22 +209,7 @@ export default function Product({ data }) {
           display: "inline-flex",
         }}
       >
-        <div
-          style={{
-            justifyContent: "flex-start",
-            alignItems: "flex-start",
-            gap: "7.10px",
-            display: "flex",
-          }}
-        >
-          <div
-            style={{
-              width: "11.75px",
-              height: "22.35px",
-              background: "#FFC633",
-            }}
-          ></div>
-        </div>
+        <StarRating rating={data.rating} />
         <div>
           <span
             style={{
@@ -307,9 +295,15 @@ export default function Product({ data }) {
   )
 }
 
-export async function getServerSideProps({ params }) {
-  const { id } = params
-  const response = await fetch(`https://dummyjson.com/products/6`)
+export async function getServerSideProps(context) {
+  const { productId } = context.query
+
+  const response = await fetch(`https://dummyjson.com/products/${productId}`)
   const data = await response.json()
-  return { props: { data } }
+
+  return {
+    props: {
+      data,
+    },
+  }
 }
