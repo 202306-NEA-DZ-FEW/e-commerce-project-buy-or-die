@@ -1,5 +1,13 @@
 import React from "react"
 
-export default function Home() {
-  return <main></main>
+import Carousels from "@/components/Carousel"
+
+const HomePage = () => {
+  return (
+    <div>
+      <Carousels />
+    </div>
+  )
 }
+
+export default HomePage
