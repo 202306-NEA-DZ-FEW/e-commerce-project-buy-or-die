@@ -31,10 +31,10 @@ const ProductCard = ({
           <div className="mt-2 mb-5 flex flex-col items-center justify-between">
             <p>
               <span className="text-3xl font-bold text-slate-900">
-                ${price}
+                ${(price - (price * discountPercentage) / 100).toFixed(2)}
               </span>
               <span className="text-sm justify-end text-red-600 line-through">
-                ${(price / (1 - discountPercentage / 100)).toFixed(2)}
+                ${price}
               </span>
               <span className="mr-2 ml-3 rounded bg-yellow-200 px-2.5 py-0.5 text-xs font-semibold">
                 {rating}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import ProductCard from "@/components/Cards/ProductCard"
 import { fetcher } from "@/Utils/API"
-
+import SearchComponent from "@/components/Search/Searchbar"
 import HomeCard from "@/components/Cards/HomeCards"
 
 export default function Example() {
@@ -17,6 +17,7 @@ export default function Example() {
   }, [])
   return (
     <main className="">
+      <SearchComponent />
       <HomeCard />
 
       <ProductCard
