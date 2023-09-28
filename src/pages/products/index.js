@@ -6,6 +6,7 @@ import ProductCard from "@/components/Cards/ProductCard"
 import Link from "next/link"
 import Sidebar from "@/components/Filter/SideBar"
 import PriceFilter from "@/components/Filter/PriceFilter"
+import Pagination from "@/components/Pagination/Pagination"
 
 const Products = ({ produ }) => {
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false)
@@ -15,6 +16,12 @@ const Products = ({ produ }) => {
   const { category, filter } = router.query
   const filterDrawerRef = useRef(null)
   const [priceRange, setPriceRange] = useState([0, 1000])
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const productsPerPage = 10
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber)
+  }
 
   const handleCategoryClick = (filterType) => {
     let updatedQuery = { pathname: router.pathname }
@@ -107,6 +114,9 @@ const Products = ({ produ }) => {
     console.log(newRange)
     setPriceRange(newRange)
   }
+  const startIndex = (currentPage - 1) * productsPerPage
+  const endIndex = startIndex + productsPerPage
+  const displayedProducts = filteredProducts.slice(startIndex, endIndex)
 
   return (
     <>
@@ -179,7 +189,7 @@ const Products = ({ produ }) => {
             <div class="col-span-2">
               <div className="mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-center items-center">
-                  {filteredProducts.map((prods) => {
+                  {displayedProducts.map((prods) => {
                     return (
                       <div key={prods.id}>
                         <Link href={`/products/${prods.id}`}>
@@ -192,6 +202,11 @@ const Products = ({ produ }) => {
               </div>
             </div>
           </div>
+          <Pagination
+            totalProducts={filteredProducts.length}
+            productsPerPage={productsPerPage}
+            onPageChange={handlePageChange}
+          />
         </div>
       </div>
     </>
