@@ -21,9 +21,9 @@ const ColorList = () => {
   }
 
   return (
-    <div>
+    <div className="bg-gray-200 w-64 p-4">
       <div className="flex">
-        <div className="flex flex-row-reverse gap-11">
+        <div className="flex flex-row-reverse gap-36">
           <Image
             onClick={toggleList}
             style={{ cursor: "pointer" }}
@@ -32,9 +32,13 @@ const ColorList = () => {
             height={"20"}
             width={"20"}
           />
-          <h1 onClick={toggleList} style={{ cursor: "pointer" }}>
+          <h2
+            className="text-lg font-semibold"
+            onClick={toggleList}
+            style={{ cursor: "pointer" }}
+          >
             Colors
-          </h1>
+          </h2>
         </div>
       </div>
       {isListVisible && (
