@@ -37,6 +37,7 @@ const Sidebar = () => {
 
   const handleCategoryClick = (categoryName) => {
     setOpenCategory(categoryName === openCategory ? null : categoryName)
+    handleCata(categoryName)
   }
 
   const handleCata = (category) => {
