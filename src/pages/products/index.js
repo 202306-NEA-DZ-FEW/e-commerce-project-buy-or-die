@@ -88,6 +88,68 @@ const Products = ({ produ }) => {
       (prods) => prods.category === category,
     )
 
+    if (category === "Fashion") {
+      const subcategories = [
+        "mens-shoes",
+        "tops",
+        "womens-dresses",
+        "womens-shoes",
+        "mens-shirts",
+        "mens-shoes",
+      ]
+      filteredProducts = produ.products.filter((prods) =>
+        subcategories.includes(prods.category),
+      )
+    }
+    if (category === "Accessories") {
+      const subcategories = [
+        "mens-watches",
+        "womens-watches",
+        "womens-bags",
+        " womens-jewellery",
+        "sunglasses",
+      ]
+      filteredProducts = produ.products.filter((prods) =>
+        subcategories.includes(prods.category),
+      )
+    }
+    if (category === "Electronics") {
+      const subcategories = ["smartphones", "Laptops"]
+      filteredProducts = produ.products.filter((prods) =>
+        subcategories.includes(prods.category),
+      )
+    }
+    if (category === "Beauty") {
+      const subcategories = ["fragrances", "skincare"]
+      filteredProducts = produ.products.filter((prods) =>
+        subcategories.includes(prods.category),
+      )
+    }
+    if (category === "Home") {
+      const subcategories = ["home-decoration", "Furniture"]
+      filteredProducts = produ.products.filter((prods) =>
+        subcategories.includes(prods.category),
+      )
+    }
+    if (category === "Automotive") {
+      const subcategories = ["automotive", "motorcycle"]
+      filteredProducts = produ.products.filter((prods) =>
+        subcategories.includes(prods.category),
+      )
+    }
+    if (category === "Groceries") {
+      const subcategories = ["groceries"]
+      filteredProducts = produ.products.filter((prods) =>
+        subcategories.includes(prods.category),
+      )
+    }
+    if (category === "Lighting") {
+      const subcategories = ["lighting"]
+      filteredProducts = produ.products.filter((prods) =>
+        subcategories.includes(prods.category),
+      )
+    }
+
     if (selectedFilterType) {
       filteredProducts = filteredProducts.slice().sort((a, b) => {
         if (selectedFilterType === "Name") {
@@ -112,12 +174,20 @@ const Products = ({ produ }) => {
   }
 
   const handleRangeChange = (newRange) => {
-    console.log(newRange)
     setPriceRange(newRange)
   }
   const startIndex = (currentPage - 1) * productsPerPage
   const endIndex = startIndex + productsPerPage
   const displayedProducts = filteredProducts.slice(startIndex, endIndex)
+
+  const Fashion = [
+    "mens-shoes",
+    "tops",
+    "womens-dresses",
+    "womens-shoes",
+    "mens-shirts",
+    "mens-shoes",
+  ]
 
   return (
     <>
@@ -136,7 +206,11 @@ const Products = ({ produ }) => {
                 onRangeChange={handleRangeChange}
               />
             </div>
-            <ColorList className="bg-gray-300 p-10 h-full " />
+            {category === "Fashion" || Fashion.includes(category) ? (
+              <ColorList className="bg-gray-300 p-10 h-full" />
+            ) : (
+              <div></div>
+            )}
           </div>
         </div>
         <div class="col-span-2 md:col-span-2 lg:col-span-3 mt-10 ">
