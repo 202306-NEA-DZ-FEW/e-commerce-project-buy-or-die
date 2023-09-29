@@ -20,10 +20,10 @@ export default function HomeCard() {
   return (
     <div style={{ padding: "10px", width: "104%" }}>
       <div>
-        <div className="relative" id="relative">
+        <div id="relative">
           <header>
             <div
-              className="absolute z-30 transform -translate-x-1/2 -translate-y-1/2"
+              className="transform -translate-x-1/2 -translate-y-1/2"
               style={{ top: "63%", left: "8%" }}
             >
               <HomeButton />
@@ -34,7 +34,7 @@ export default function HomeCard() {
               data-carousel="static"
             >
               <div
-                className="overflow-hidden relative"
+                className="overflow-hidden -z-50 relative"
                 style={{ height: "450px" }}
               >
                 <div
@@ -93,7 +93,7 @@ export default function HomeCard() {
                   />
                 </div>
               </div>
-              <div className="flex absolute bottom-5 left-1/2 z-30 space-x-3 transform -translate-x-1/2">
+              <div className="flex absolute bottom-5 left-1/2 space-x-3 transform -translate-x-1/2">
                 <button
                   type="button"
                   className={`w-3 h-3 cursor-none rounded-full ${
@@ -157,7 +157,7 @@ export default function HomeCard() {
               </div>
               <button
                 type="button"
-                className="flex absolute top-0 left-0 z-10 justify-start items-center px-4 h-full cursor-pointer group focus:outline-none"
+                className="flex absolute top-0 left-0 justify-start items-center px-4 h-full cursor-pointer group focus:outline-none"
                 data-carousel-prev=""
                 onClick={handlePrevSlide}
               >
@@ -181,7 +181,7 @@ export default function HomeCard() {
               </button>
               <button
                 type="button"
-                className="flex absolute top-0 right-0 z-10 justify-end items-center px-4 h-full cursor-pointer group focus:outline-none"
+                className="flex absolute top-0 right-0 justify-end items-center px-4 h-full cursor-pointer group focus:outline-none"
                 data-carousel-next=""
                 onClick={handleNextSlide}
               >
