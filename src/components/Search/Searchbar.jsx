@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import { fetcher } from "@/Utils/API"
 import Link from "next/link"
+import Image from "next/image"
 
 const SearchComponent = () => {
   const [searchTerm, setSearchTerm] = useState("")
@@ -37,31 +38,31 @@ const SearchComponent = () => {
   }, [])
 
   return (
-    <div className="flex flex-col items-center">
-      <div ref={searchRef}>
+    <div>
+      <div
+        ref={searchRef}
+        className="flex items-center bg-white border border-gray-300 rounded-xl p-1"
+      >
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Enter search term"
-          className="border border-gray-300 rounded-l-md py-2 px-4  flex-grow"
+          className="flex-grow outline-none px-2"
         />
         <button
           onClick={handleSearch}
-          className="text-white hover:bg-red-600 font-semibold py-2 px-4 rounded-r-md"
-          style={{
-            backgroundColor: "rgba(193, 220, 220, 1)",
-            transition: "background-color 0.3s",
-          }}
-          onMouseEnter={(e) =>
-            (e.target.style.backgroundColor = "rgba(64, 84, 84, 1)")
-          }
-          onMouseLeave={(e) =>
-            (e.target.style.backgroundColor = "rgba(193, 220, 220, 1)")
-          }
+          className="flex items-center justify-center bg-transparent text-white rounded-md ml-2"
+          onMouseEnter={(e) => (e.target.style.backgroundColor = "")}
+          onMouseLeave={(e) => (e.target.style.backgroundColor = "")}
         >
-          Search
+          <Image
+            src="/akar-icons_search.svg"
+            alt="search"
+            width={20}
+            height={20}
+          />
         </button>
       </div>
       <ul className="flex pr-7 justify-center">

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react"
 import { fetcher } from "@/Utils/API"
 import { Carousel } from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
-import ProductCard from "./Cards/ProductCard"
-import TwoCards from "./Cards/TwoCards"
+import RightCard from "./Cards/RightHome"
+import LeftCard from "./Cards/LeftHome"
 
 const Carousels = () => {
   // State to store the products, loading state, and error state
@@ -53,7 +53,7 @@ const Carousels = () => {
             className="flex flex-row flex-wrap pl-28 justify-center gap-2"
           >
             {/* Display the first product in the pair */}
-            <TwoCards
+            <LeftCard
               title={pair[0].title}
               thumbnail={pair[0].thumbnail}
               price={pair[0].price}
@@ -64,7 +64,7 @@ const Carousels = () => {
 
             {/* Check if there is a second product in the pair */}
             {pair[1] && (
-              <TwoCards
+              <RightCard
                 title={pair[1].title}
                 thumbnail={pair[1].thumbnail}
                 price={pair[1].price}
