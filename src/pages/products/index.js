@@ -4,6 +4,10 @@ import { useRouter } from "next/router"
 import { fetcher } from "@/Utils/API"
 import ProductCard from "@/components/Cards/ProductCard"
 import Link from "next/link"
+import Sidebar from "@/components/Filter/SideBar"
+import PriceFilter from "@/components/Filter/PriceFilter"
+import Pagination from "@/components/Pagination/Pagination"
+import ColorList from "@/components/Filter/Color"
 
 const Products = ({ produ }) => {
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false)
@@ -12,6 +16,13 @@ const Products = ({ produ }) => {
   const router = useRouter()
   const { category, filter } = router.query
   const filterDrawerRef = useRef(null)
+  const [priceRange, setPriceRange] = useState([0, 1000])
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const productsPerPage = 10
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber)
+  }
 
   const handleCategoryClick = (filterType) => {
     let updatedQuery = { pathname: router.pathname }
@@ -66,16 +77,78 @@ const Products = ({ produ }) => {
     }
   }
 
-  let filteredProducts = produ.products
+  let filteredProducts = produ.products.slice()
 
   if (filter) {
     filteredProducts = filterProducts()
   }
 
   if (category) {
-    filteredProducts = produ.products.filter(
+    filteredProducts = filteredProducts.filter(
       (prods) => prods.category === category,
     )
+
+    if (category === "Fashion") {
+      const subcategories = [
+        "mens-shoes",
+        "tops",
+        "womens-dresses",
+        "womens-shoes",
+        "mens-shirts",
+        "mens-shoes",
+      ]
+      filteredProducts = produ.products.filter((prods) =>
+        subcategories.includes(prods.category),
+      )
+    }
+    if (category === "Accessories") {
+      const subcategories = [
+        "mens-watches",
+        "womens-watches",
+        "womens-bags",
+        " womens-jewellery",
+        "sunglasses",
+      ]
+      filteredProducts = produ.products.filter((prods) =>
+        subcategories.includes(prods.category),
+      )
+    }
+    if (category === "Electronics") {
+      const subcategories = ["smartphones", "Laptops"]
+      filteredProducts = produ.products.filter((prods) =>
+        subcategories.includes(prods.category),
+      )
+    }
+    if (category === "Beauty") {
+      const subcategories = ["fragrances", "skincare"]
+      filteredProducts = produ.products.filter((prods) =>
+        subcategories.includes(prods.category),
+      )
+    }
+    if (category === "Home") {
+      const subcategories = ["home-decoration", "Furniture"]
+      filteredProducts = produ.products.filter((prods) =>
+        subcategories.includes(prods.category),
+      )
+    }
+    if (category === "Automotive") {
+      const subcategories = ["automotive", "motorcycle"]
+      filteredProducts = produ.products.filter((prods) =>
+        subcategories.includes(prods.category),
+      )
+    }
+    if (category === "Groceries") {
+      const subcategories = ["groceries"]
+      filteredProducts = produ.products.filter((prods) =>
+        subcategories.includes(prods.category),
+      )
+    }
+    if (category === "Lighting") {
+      const subcategories = ["lighting"]
+      filteredProducts = produ.products.filter((prods) =>
+        subcategories.includes(prods.category),
+      )
+    }
 
     if (selectedFilterType) {
       filteredProducts = filteredProducts.slice().sort((a, b) => {
@@ -91,9 +164,30 @@ const Products = ({ produ }) => {
     }
   }
 
+  filteredProducts = filteredProducts.filter(
+    (product) =>
+      product.price >= priceRange[0] && product.price <= priceRange[1],
+  )
+
   const toggleFilterDrawer = () => {
     setIsFilterDrawerOpen(!isFilterDrawerOpen)
   }
+
+  const handleRangeChange = (newRange) => {
+    setPriceRange(newRange)
+  }
+  const startIndex = (currentPage - 1) * productsPerPage
+  const endIndex = startIndex + productsPerPage
+  const displayedProducts = filteredProducts.slice(startIndex, endIndex)
+
+  const Fashion = [
+    "mens-shoes",
+    "tops",
+    "womens-dresses",
+    "womens-shoes",
+    "mens-shirts",
+    "mens-shoes",
+  ]
 
   return (
     <>
@@ -101,7 +195,23 @@ const Products = ({ produ }) => {
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         <div class="col-span-2 md:col-span-1 lg:col-span-0 ">
-          <div class="bg-gray-300 p-10 h-full ">Sidebar</div>
+          <div class="bg-gray-300 p-10 h-full ">
+            Sidebar
+            <Sidebar />
+            <div className="flex">
+              <PriceFilter
+                min={0}
+                max={1000}
+                range={priceRange}
+                onRangeChange={handleRangeChange}
+              />
+            </div>
+            {category === "Fashion" || Fashion.includes(category) ? (
+              <ColorList className="bg-gray-300 p-10 h-full" />
+            ) : (
+              <div></div>
+            )}
+          </div>
         </div>
         <div class="col-span-2 md:col-span-2 lg:col-span-3 mt-10 ">
           <div className="container grid grid-cols-2 p-2 text-black rounded-full ">
@@ -155,12 +265,10 @@ const Products = ({ produ }) => {
             <div class="col-span-2">
               <div className="mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-center items-center">
-                  {filteredProducts.map((prods) => {
+                  {displayedProducts.map((prods) => {
                     return (
                       <div key={prods.id}>
-                        <Link href={`/products/${prods.id}`}>
-                          <ProductCard {...prods} />
-                        </Link>
+                        <ProductCard {...prods} />
                       </div>
                     )
                   })}
@@ -168,6 +276,11 @@ const Products = ({ produ }) => {
               </div>
             </div>
           </div>
+          <Pagination
+            totalProducts={filteredProducts.length}
+            productsPerPage={productsPerPage}
+            onPageChange={handlePageChange}
+          />
         </div>
       </div>
     </>

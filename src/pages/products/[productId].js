@@ -1,4 +1,5 @@
 import { useState } from "react"
+
 import ProductCard from "../../components/Cards/ProductCard"
 import Link from "next/link"
 import StarRating from "../../components/Cards/StarRating"
@@ -105,6 +106,7 @@ export default function Product({ data, data1, data2, data3, data4 }) {
       </div>
 
       {/** BUY NOW ! */}
+
       <div
         style={{
           width: "400px",
@@ -113,7 +115,9 @@ export default function Product({ data, data1, data2, data3, data4 }) {
           paddingRight: "54px",
           paddingTop: "16px",
           paddingBottom: "16px",
+
           left: "1050px",
+
           top: "301px",
           position: "absolute",
           background: "black",
@@ -130,14 +134,18 @@ export default function Product({ data, data1, data2, data3, data4 }) {
             color: "white",
             fontSize: "16px",
             fontFamily: "Satoshi",
+
             fontWeight: 500,
+
             wordWrap: "break-word",
           }}
         >
           Add to Cart
         </div>
       </div>
+
       {/** N° of items */}
+
       <div
         style={{
           width: "170px",
@@ -157,7 +165,9 @@ export default function Product({ data, data1, data2, data3, data4 }) {
           display: "inline-flex",
         }}
       >
+
         <div style={{ width: "24px", height: "24px", position: "relative" }}>
+
           <div
             style={{
               width: "18.75px",
@@ -174,13 +184,17 @@ export default function Product({ data, data1, data2, data3, data4 }) {
             color: "black",
             fontSize: "16px",
             fontFamily: "Satoshi",
+
             fontWeight: 500,
+
             wordWrap: "break-word",
           }}
         >
           1
         </div>
+
         <div style={{ width: "24px", height: "24px", position: "relative" }}>
+
           <div
             style={{
               width: "18.75px",
@@ -194,8 +208,10 @@ export default function Product({ data, data1, data2, data3, data4 }) {
         </div>
       </div>
 
+
       {/** description , you may like ! */}
       {/*<div style={{ left: '292px', top: '582px', position: 'absolute', color: 'rgba(0, 0, 0, 0.60)', fontSize: '16px', fontFamily: 'Satoshi', fontWeight: 400, wordWrap: 'break-word' }}>Select Colors</div>*/}
+
       <div
         style={{
           width: "590px",
@@ -205,11 +221,14 @@ export default function Product({ data, data1, data2, data3, data4 }) {
           color: "rgba(0, 0, 0, 0.60)",
           fontSize: "16px",
           fontFamily: "Satoshi",
+
           fontWeight: 400,
+
           lineHeight: "22px",
           wordWrap: "break-word",
         }}
       >
+
         {" "}
         {data.description}{" "}
       </div>
@@ -261,6 +280,7 @@ export default function Product({ data, data1, data2, data3, data4 }) {
       </div>
 
       {/* price + title */}
+
       <div
         style={{
           left: "819px",
@@ -269,12 +289,14 @@ export default function Product({ data, data1, data2, data3, data4 }) {
           color: "black",
           fontSize: "40px",
           fontFamily: "Integral CF",
+
           fontWeight: 700,
           wordWrap: "break-word",
         }}
       >
         {" "}
         {data.title}{" "}
+
       </div>
       <div
         style={{
@@ -292,11 +314,13 @@ export default function Product({ data, data1, data2, data3, data4 }) {
             color: "black",
             fontSize: "32px",
             fontFamily: "Satoshi",
+
             fontWeight: 700,
             wordWrap: "break-word",
           }}
         >
           ${" "}
+
           {Math.floor(
             data.price - (data.price * data.discountPercentage) / 100,
           )}
@@ -306,7 +330,9 @@ export default function Product({ data, data1, data2, data3, data4 }) {
             color: "rgba(0, 0, 0, 0.30)",
             fontSize: "32px",
             fontFamily: "Satoshi",
+
             fontWeight: 700,
+
             textDecoration: "line-through",
             wordWrap: "break-word",
           }}
@@ -315,7 +341,9 @@ export default function Product({ data, data1, data2, data3, data4 }) {
         </div>
       </div>
 
+
       {/* stars + dicount + title : product details */}
+
       <div
         style={{
           left: "1239px",
@@ -327,9 +355,11 @@ export default function Product({ data, data1, data2, data3, data4 }) {
           display: "inline-flex",
         }}
       >
+
         {/* <div style={{ justifyContent: 'flex-start', alignItems: 'flex-start', gap: '7.10px', display: 'flex' }}>
       <div style={{ width: '11.75px', height: '22.35px', background: '#FFC633' }}></div>
     </div> */}
+
         <StarRating rating={data.rating} />
         <div>
           <span
@@ -337,7 +367,9 @@ export default function Product({ data, data1, data2, data3, data4 }) {
               color: "black",
               fontSize: "16px",
               fontFamily: "Satoshi",
+
               fontWeight: 400,
+
               wordWrap: "break-word",
             }}
           >
@@ -348,7 +380,9 @@ export default function Product({ data, data1, data2, data3, data4 }) {
               color: "rgba(0, 0, 0, 0.60)",
               fontSize: "16px",
               fontFamily: "Satoshi",
+
               fontWeight: 400,
+
               wordWrap: "break-word",
             }}
           >
@@ -356,6 +390,8 @@ export default function Product({ data, data1, data2, data3, data4 }) {
           </span>
         </div>
       </div>
+
+
       <div
         style={{
           paddingLeft: "14px",
@@ -379,13 +415,17 @@ export default function Product({ data, data1, data2, data3, data4 }) {
             color: "#FF3333",
             fontSize: "16px",
             fontFamily: "Satoshi",
+
             fontWeight: 500,
+
             wordWrap: "break-word",
           }}
         >
           -{data.discountPercentage}%
         </div>
       </div>
+
+
       <div
         style={{
           left: "831px",
@@ -394,7 +434,9 @@ export default function Product({ data, data1, data2, data3, data4 }) {
           color: "rgba(0, 0, 0, 0.60)",
           fontSize: "20px",
           fontFamily: "Satoshi",
+
           fontWeight: 400,
+
           lineHeight: "22px",
           wordWrap: "break-word",
         }}
@@ -417,6 +459,7 @@ export default function Product({ data, data1, data2, data3, data4 }) {
 export async function getServerSideProps(context) {
   const { productId } = context.query
 
+
   const new1 = parseInt(productId, 10) + 1
   const new2 = parseInt(productId, 10) + 2
   const new3 = parseInt(productId, 10) + 3
@@ -438,4 +481,5 @@ export async function getServerSideProps(context) {
   const data4 = await response4.json()
 
   return { props: { data, data1, data2, data3, data4 } }
+
 }
