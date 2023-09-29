@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react"
 import { fetcher } from "@/Utils/API"
 import { Carousel } from "react-responsive-carousel"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
+import ProductCard from "./Cards/ProductCard"
+import TwoCards from "./Cards/TwoCards"
 
 const Carousels = () => {
   // State to store the products, loading state, and error state
@@ -34,25 +36,40 @@ const Carousels = () => {
     fetchData()
   }, [])
 
-  return (
-    <div>
-      {/* Display the carousel */}
-      <Carousel>
-        {/* Map over the products and display each product as a slide */}
-        {products.map((product) => (
-          <div key={product.id} className="p-4">
-            {/* Display the product title */}
-            <h3>{product.title}</h3>
+  const productPairs = []
+  for (let i = 0; i < products.length; i += 2) {
+    const pair = products.slice(i, i + 2)
+    productPairs.push(pair)
+  }
 
-            {/* Display the product thumbnail image */}
-            <img
-              src={product.thumbnail}
-              alt={product.title}
-              className="w-48 h-32"
+  return (
+    <div className="flex justify-center">
+      {/* Display the carousel */}
+      <Carousel className="w-1/2 ">
+        {/* Map over the product pairs and display each pair as a slide */}
+        {productPairs.map((pair, index) => (
+          <div key={index} className="p-4 flex flex-row justify-center gap-7">
+            {/* Display the first product in the pair */}
+            <TwoCards
+              title={pair[0].title}
+              thumbnail={pair[0].thumbnail}
+              price={pair[0].price}
+              rating={pair[0].rating}
+              discountPercentage={pair[0].discountPercentage}
+              description={pair[0].description}
             />
 
-            {/* Display the product description */}
-            <p>{product.description}</p>
+            {/* Check if there is a second product in the pair */}
+            {pair[1] && (
+              <TwoCards
+                title={pair[1].title}
+                thumbnail={pair[1].thumbnail}
+                price={pair[1].price}
+                rating={pair[1].rating}
+                discountPercentage={pair[1].discountPercentage}
+                description={pair[1].description}
+              />
+            )}
           </div>
         ))}
       </Carousel>
