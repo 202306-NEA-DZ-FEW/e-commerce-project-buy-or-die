@@ -268,9 +268,7 @@ const Products = ({ produ }) => {
                   {displayedProducts.map((prods) => {
                     return (
                       <div key={prods.id}>
-                        <Link href={`/products/${prods.id}`}>
-                          <ProductCard {...prods} />
-                        </Link>
+                        <ProductCard {...prods} />
                       </div>
                     )
                   })}
