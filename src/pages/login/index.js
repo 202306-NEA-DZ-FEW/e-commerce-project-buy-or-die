@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { signInWithEmailAndPassword, signOut } from "firebase/auth"
 import { auth } from "@/Utils/firebase"
 import { onAuthStateChanged } from "firebase/auth"
+import Link from "next/link"
 
 const Login = () => {
   const [user, setUser] = useState(null)
@@ -85,6 +86,9 @@ const Login = () => {
             </button>
           </div>
         </form>
+        <Link className="text-blue-500 hover:underline" href={`./signup`}>
+          Register
+        </Link>
       </div>
     </div>
   )
