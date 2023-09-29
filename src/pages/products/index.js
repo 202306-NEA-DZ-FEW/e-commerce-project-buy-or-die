@@ -77,7 +77,7 @@ const Products = ({ produ }) => {
     }
   }
 
-  let filteredProducts = produ.products
+  let filteredProducts = produ.products.slice()
 
   if (filter) {
     filteredProducts = filterProducts()
