@@ -43,12 +43,15 @@ const Carousels = () => {
   }
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center pt-5">
       {/* Display the carousel */}
-      <Carousel className="w-1/2 ">
+      <Carousel className="w-1/2 self-center ">
         {/* Map over the product pairs and display each pair as a slide */}
         {productPairs.map((pair, index) => (
-          <div key={index} className="p-4 flex flex-row justify-center gap-7">
+          <div
+            key={index}
+            className="flex flex-row flex-wrap pl-28 justify-center gap-2"
+          >
             {/* Display the first product in the pair */}
             <TwoCards
               title={pair[0].title}
