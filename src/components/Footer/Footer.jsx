@@ -1,5 +1,5 @@
 import React from "react"
-import Logo from "../components/Logo"
+import Image from "next/image"
 
 const Footer = () => {
   return (
@@ -15,7 +15,7 @@ const Footer = () => {
               href="#"
               className="flex items-center space-x-3 md:justify-start"
             >
-              <Logo className="w-16 h-16 md:w-24 md:h-24" />
+              <Image src={"/Sougna_1.png"} width={100} height={100} />
             </a>
           </div>
           <div className="col-span-6 text-center md:text-left md:col-span-3">

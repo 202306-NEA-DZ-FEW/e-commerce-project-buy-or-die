@@ -47,51 +47,78 @@ const RandomImages = () => {
   }, [currentImages, currentIndex, imageUrls])
 
   return (
-    <div className="absolute top-[1728px] left-[144px] bg-whitesmoke w-[1440px] h-[1024px] overflow-hidden text-13xl">
-      <div className="absolute top-[8px] left-[589px] flex flex-col items-center justify-start gap-[12px]">
-        <b className="relative">Categories</b>
-        <div className="relative text-lg font-medium text-color-21">
+    <div className="flex flex-col items-center text-13xl">
+      <div className="flex flex-col items-center ">
+        <b className="">Categories</b>
+        <div className=" text-lg font-medium text-color-21 pb-20">
           Find what you are looking for
         </div>
       </div>
-      <div className="absolute top-[191px] left-[0px] bg-color-1 w-[1440px] h-[841px] text-lg text-color-2">
-        <div className="absolute top-[-48px] left-[96px] flex flex-col items-center justify-start gap-[12px]">
-          <img
-            className="relative rounded-xl w-[352px] h-[512px] overflow-hidden shrink-0 object-cover"
-            alt=""
-            src={currentImages[0]}
-          />
-          <b className="relative">text</b>
-        </div>
-        <div className="absolute top-[-48px] left-[992px] flex flex-col items-center justify-start gap-[12px]">
-          <img
-            className="relative rounded-xl w-[352px] h-[512px] overflow-hidden shrink-0 object-cover"
-            alt=""
-            src={currentImages[1]}
-          />
-          <b className="relative">text</b>
-        </div>
-        <div className="absolute top-[48px] left-[544px] flex flex-col items-center justify-start gap-[24px]">
-          <div className="flex flex-col items-start justify-start gap-[12px]">
-            <div className="flex flex-col items-center justify-start gap-[12px]">
-              <img
-                className="relative rounded-xl w-[352px] h-[512px] overflow-hidden shrink-0 object-cover"
-                alt=""
-                src={currentImages[2]}
-              />
-              <b className="relative">text</b>
-            </div>
-            <div className="relative font-medium text-color-21 text-center inline-block w-[352px]">
-              text
+
+      <div
+        style={{
+          height: "700px",
+          borderBottomLeftRadius: "var(--br-x) var(--br-y)",
+          "--br-x": "100px",
+          "--br-y": "100px",
+          borderBottomRightRadius: "100px",
+        }}
+        className="bg-[#C1DCDC] p-5 overflow"
+      >
+        <div className="">
+          <div className="flex item-center">
+            <div className=" flex item-center gap-96">
+              <div
+                className="relative right-36 flex flex-col items-center"
+                style={{
+                  filter: "drop-shadow(-39px 28px 10px rgb(160, 0, 210))",
+                  bottom: "150px",
+                  animation: "fly 5s linear infinite",
+                  transition: "opacity 0.3s ease-in-out",
+                }}
+              >
+                <img
+                  className="rounded-xl w-[252px] border h-[412px] overflow-hidden object-cover transform hover:-translate-y-2 transition duration-300"
+                  alt=""
+                  src={currentImages[0]}
+                />
+                <b className="pt-7">text</b>
+              </div>
+              <div
+                className="relative left-36 flex flex-col items-center"
+                style={{
+                  filter: "drop-shadow(39px 28px 10px rgba(193, 220, 220, 1))",
+                  bottom: "150px",
+                  animation: "fly 5s linear infinite",
+                  transition: "opacity 0.3s ease-in-out",
+                  animationDelay: "100ms",
+                }}
+              >
+                <img
+                  className="rounded-xl border w-[252px] h-[412px] overflow-hidden object-cover transform hover:-translate-y-2 transition duration-300"
+                  alt=""
+                  src={currentImages[2]}
+                />
+                <b className="pt-7">text</b>
+              </div>
             </div>
           </div>
-          <div className="rounded-lg bg-white flex flex-row items-center justify-start py-3 px-6 gap-[10px] text-center">
-            <div className="relative font-medium">Explore</div>
+          <div
+            className="relative flex flex-col items-center"
+            style={{
+              filter: "drop-shadow(0px 39px 10px #000000)",
+              bottom: "250px",
+              animation: "fly 5s linear infinite",
+              transition: "opacity 0.3s ease-in-out",
+              animationDelay: "200ms",
+            }}
+          >
             <img
-              className="relative w-6 h-5 overflow-hidden shrink-0"
+              className="rounded-xl border w-[252px] h-[412px] overflow-hidden object-cover transform hover:-translate-y-2 transition duration-300"
               alt=""
-              src="/arrowright.svg"
+              src={currentImages[1]}
             />
+            <b className="pt-7">text</b>
           </div>
         </div>
       </div>
