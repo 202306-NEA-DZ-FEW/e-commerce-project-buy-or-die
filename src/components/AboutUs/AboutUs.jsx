@@ -13,7 +13,7 @@ export default function AboutCard() {
   }
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center pl-8 justify-center h-screen">
       <div
         className="relative flex flex-col rounded-xl text-custom-text-color shadow-lg md:max-w-4x1 md:flex-row"
         style={cardStyle}

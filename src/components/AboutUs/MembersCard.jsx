@@ -9,7 +9,8 @@ export default function MembersCard() {
       githubLink: "https://github.com/takidilmi",
       linkedinLink: "https://www.linkedin.com/in/takidilmi/",
       emailLink: "angeldilmi@gmail.com",
-      content: "Front-end Web developer",
+      content:
+        "As a front-end developer enthusiast, if you need it, i can make it and I would rather wait for people than let them wait for me",
     },
     {
       title: "Walid Belharazem",
@@ -81,7 +82,7 @@ export default function MembersCard() {
             </div>
             <div className="p-4">
               <h4 className="text-xl font-semibold">{items.title}</h4>
-              <p className="mb-2 leading-normal">{items.content}</p>
+              <p className="mb-2 leading-normal h-32">{items.content}</p>
               <div className="flex flex-col sm:flex-row justify-between items-center mt-4">
                 <a
                   href={items.githubLink}
