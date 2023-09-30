@@ -1,10 +1,20 @@
 import { useState } from "react"
-
 import ProductCard from "../../components/Cards/ProductCard"
 import Link from "next/link"
 import StarRating from "../../components/Cards/StarRating"
+import { useDispatch } from "react-redux"
+import { addToCart } from "@/redux/shopperSlice"
+import toast, { Toaster } from "react-hot-toast"
+
 export default function Product({ data, data1, data2, data3, data4 }) {
+  const dispatch = useDispatch()
   const [mainImage, setmainImage] = useState(0)
+
+  const newprice = (
+    data.price -
+    (data.price * data.discountPercentage) / 100
+  ).toFixed(2)
+  const _Id = Number(data.id)
   return (
     <div style={{ width: "100%", height: "100%", position: "relative" }}>
       <img
@@ -129,7 +139,22 @@ export default function Product({ data, data1, data2, data3, data4 }) {
           display: "inline-flex",
         }}
       >
-        <div
+        <button
+          onClick={() =>
+            dispatch(
+              addToCart({
+                _id: _Id,
+                title: data.title,
+                image: data.thumbnail,
+                newprice: newprice,
+                discountPercentage: data.discountPercentage,
+                rating: data.rating,
+                stock: data.stock,
+                quantity: 1,
+              }),
+            ) &&
+            toast.success(`${data.title.substring(0, 20)} is added to cart`)
+          }
           style={{
             color: "white",
             fontSize: "16px",
@@ -141,7 +166,7 @@ export default function Product({ data, data1, data2, data3, data4 }) {
           }}
         >
           Add to Cart
-        </div>
+        </button>
       </div>
 
       {/** N° of items */}
@@ -165,9 +190,7 @@ export default function Product({ data, data1, data2, data3, data4 }) {
           display: "inline-flex",
         }}
       >
-
         <div style={{ width: "24px", height: "24px", position: "relative" }}>
-
           <div
             style={{
               width: "18.75px",
@@ -194,7 +217,6 @@ export default function Product({ data, data1, data2, data3, data4 }) {
         </div>
 
         <div style={{ width: "24px", height: "24px", position: "relative" }}>
-
           <div
             style={{
               width: "18.75px",
@@ -207,7 +229,6 @@ export default function Product({ data, data1, data2, data3, data4 }) {
           ></div>
         </div>
       </div>
-
 
       {/** description , you may like ! */}
       {/*<div style={{ left: '292px', top: '582px', position: 'absolute', color: 'rgba(0, 0, 0, 0.60)', fontSize: '16px', fontFamily: 'Satoshi', fontWeight: 400, wordWrap: 'break-word' }}>Select Colors</div>*/}
@@ -228,7 +249,6 @@ export default function Product({ data, data1, data2, data3, data4 }) {
           wordWrap: "break-word",
         }}
       >
-
         {" "}
         {data.description}{" "}
       </div>
@@ -296,7 +316,6 @@ export default function Product({ data, data1, data2, data3, data4 }) {
       >
         {" "}
         {data.title}{" "}
-
       </div>
       <div
         style={{
@@ -320,7 +339,6 @@ export default function Product({ data, data1, data2, data3, data4 }) {
           }}
         >
           ${" "}
-
           {Math.floor(
             data.price - (data.price * data.discountPercentage) / 100,
           )}
@@ -341,7 +359,6 @@ export default function Product({ data, data1, data2, data3, data4 }) {
         </div>
       </div>
 
-
       {/* stars + dicount + title : product details */}
 
       <div
@@ -355,7 +372,6 @@ export default function Product({ data, data1, data2, data3, data4 }) {
           display: "inline-flex",
         }}
       >
-
         {/* <div style={{ justifyContent: 'flex-start', alignItems: 'flex-start', gap: '7.10px', display: 'flex' }}>
       <div style={{ width: '11.75px', height: '22.35px', background: '#FFC633' }}></div>
     </div> */}
@@ -391,7 +407,6 @@ export default function Product({ data, data1, data2, data3, data4 }) {
         </div>
       </div>
 
-
       <div
         style={{
           paddingLeft: "14px",
@@ -425,7 +440,6 @@ export default function Product({ data, data1, data2, data3, data4 }) {
         </div>
       </div>
 
-
       <div
         style={{
           left: "831px",
@@ -452,13 +466,23 @@ export default function Product({ data, data1, data2, data3, data4 }) {
           position: "absolute",
         }}
       ></div>
+      <Toaster
+        reverseOrder={false}
+        position="top-center"
+        toastOptions={{
+          style: {
+            borderRadius: "8px",
+            background: "#333",
+            color: "#fff",
+          },
+        }}
+      />
     </div>
   )
 }
 
 export async function getServerSideProps(context) {
   const { productId } = context.query
-
 
   const new1 = parseInt(productId, 10) + 1
   const new2 = parseInt(productId, 10) + 2
@@ -481,5 +505,4 @@ export async function getServerSideProps(context) {
   const data4 = await response4.json()
 
   return { props: { data, data1, data2, data3, data4 } }
-
 }

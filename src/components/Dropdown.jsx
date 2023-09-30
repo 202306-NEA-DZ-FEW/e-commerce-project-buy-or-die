@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from "react"
+import { signOut } from "firebase/auth"
+import { auth } from "@/Utils/firebase"
 import Link from "next/link"
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef(null)
+  const [user, setUser] = useState(null)
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen)
@@ -26,6 +29,23 @@ const Dropdown = () => {
     }
   }, [])
 
+  const handleSingOut = async () => {
+    await signOut(auth)
+  }
+
+  useEffect(() => {
+    const logged = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user)
+      } else {
+        setUser(null)
+      }
+    })
+    return () => {
+      logged()
+    }
+  }, [])
+
   return (
     <div
       className="relative "
@@ -33,7 +53,7 @@ const Dropdown = () => {
       ref={dropdownRef}
     >
       <div className="px-4 font-bold hover:text-blue-500 hover:underline text-black bg-transparent">
-        Account
+        {user ? user.displayName : "Account"}
       </div>
 
       {isOpen && (
@@ -42,19 +62,18 @@ const Dropdown = () => {
           className="absolute cursor-pointer right-0 mt-2 mr-4 bg-white rounded-md shadow-lg overflow-hidden"
         >
           <ul className="py-2 h-full ">
-            <li className="px-2 py-2 border border-t-transparent border-r-transparent border-l-transparent hover:bg-gray-100">
-              Buy or Die
-            </li>
-            <li className="flex justify-between px-2 py-2 hover:bg-gray-100">
-              <button className="text-blue-500">LogIn</button>
-              <button className="text-blue-500">Register</button>
-            </li>
-            <Link href={`./`} className="px-2 py-2 hover:bg-gray-100">
-              My Orders
-            </Link>
-            <li className="px-2 py-2 hover:bg-gray-100 ">My Coins</li>
-            <li className="px-2 py-2 hover:bg-gray-100 ">Message Center</li>
-            <li className="px-2 py-2 hover:bg-gray-100 ">Payment</li>
+            {user ? (
+              <button
+                onClick={handleSingOut}
+                className="px-2 py-2 border border-t-transparent border-r-transparent border-l-transparent hover:bg-gray-100"
+              >
+                SignOut
+              </button>
+            ) : (
+              <button className="px-2 py-2 border border-t-transparent border-r-transparent border-l-transparent hover:bg-gray-100">
+                SignIn/SignUp
+              </button>
+            )}
           </ul>
         </div>
       )}

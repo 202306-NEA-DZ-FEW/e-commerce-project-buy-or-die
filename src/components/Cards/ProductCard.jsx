@@ -3,6 +3,7 @@ import StarRating from "./StarRating"
 import Link from "next/link"
 import { useDispatch } from "react-redux"
 import { addToCart } from "@/redux/shopperSlice"
+import toast, { Toaster } from "react-hot-toast"
 
 const ProductCard = ({
   id,
@@ -14,6 +15,7 @@ const ProductCard = ({
   stock,
 }) => {
   const dispatch = useDispatch()
+  const newprice = (price - (price * discountPercentage) / 100).toFixed(2)
   return (
     <div className="w-full max-w-xs transition duration-300 ease-in-out hover:scale-110 ">
       <div className="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md md:max-h-96">
@@ -66,12 +68,13 @@ const ProductCard = ({
                     _id: id,
                     title: title,
                     image: thumbnail,
-                    oldPrice: price,
+                    newprice: newprice,
                     discountPercentage: discountPercentage,
                     rating: rating,
                     stock: stock,
+                    quantity: 1,
                   }),
-                )
+                ) && toast.success(`${title.substring(0, 20)} is added to cart`)
               }
               xmlns="http://www.w3.org/2000/svg"
               className="mr-2 h-6 w-6"
@@ -90,6 +93,17 @@ const ProductCard = ({
           </div>
         </div>
       </div>
+      <Toaster
+        reverseOrder={false}
+        position="top-center"
+        toastOptions={{
+          style: {
+            borderRadius: "8px",
+            background: "#333",
+            color: "#fff",
+          },
+        }}
+      />
     </div>
   )
 }
