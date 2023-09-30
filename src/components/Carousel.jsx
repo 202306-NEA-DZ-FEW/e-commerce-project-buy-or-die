@@ -43,7 +43,7 @@ const Carousels = () => {
   }
 
   return (
-    <div className="flex justify-center pt-5">
+    <div className="flex justify-center pt-8 pb-40">
       {/* Display the carousel */}
       <Carousel className="w-1/2 self-center ">
         {/* Map over the product pairs and display each pair as a slide */}
@@ -60,6 +60,7 @@ const Carousels = () => {
               rating={pair[0].rating}
               discountPercentage={pair[0].discountPercentage}
               description={pair[0].description}
+              pid={pair[0].id}
             />
 
             {/* Check if there is a second product in the pair */}
@@ -71,6 +72,7 @@ const Carousels = () => {
                 rating={pair[1].rating}
                 discountPercentage={pair[1].discountPercentage}
                 description={pair[1].description}
+                pid={pair[1].id}
               />
             )}
           </div>

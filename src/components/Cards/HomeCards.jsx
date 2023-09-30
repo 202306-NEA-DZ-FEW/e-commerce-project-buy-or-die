@@ -18,13 +18,13 @@ export default function HomeCard() {
   }
 
   return (
-    <div style={{ padding: "10px", width: "104%" }}>
+    <div style={{ padding: "10px", width: "104%", paddingTop: "40px" }}>
       <div>
         <div id="relative">
           <header>
             <div
-              className="transform -translate-x-1/2 -translate-y-1/2"
-              style={{ top: "63%", left: "8%" }}
+              className="absolute z-50 transform -translate-x-1/2 -translate-y-1/2"
+              style={{ top: "33%", left: "20%" }}
             >
               <HomeButton />
             </div>
