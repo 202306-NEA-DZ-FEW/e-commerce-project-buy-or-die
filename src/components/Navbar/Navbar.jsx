@@ -40,8 +40,16 @@ const NavBar = () => {
   }, [])
 
   return (
-    <nav className="h-14 flex overflow-hidden items-center bg-transparent border text-black">
-      <div className=" mx-auto flex justify-between items-center w-full fixed">
+    <nav className="h-14 flex items-center bg-transparent text-black">
+      <div
+        style={{
+          filter: "drop-shadow(5px 25px 10px #000000)",
+          position: "fixed",
+          width: "100%",
+          zIndex: "9999",
+        }}
+        className=" flex justify-between border bg-white bg-opacity-30 rounded-3xl items-center w-full"
+      >
         <div className="flex ">
           <button className="bg-transparent text-black rounded-full">
             <Image src="/FilterRight.svg" alt="List" width={50} height={50} />
