@@ -51,7 +51,7 @@ function CartPage() {
     addcart()
     const stripe = await stripePromise
 
-    fetch("/api/checkout", {
+    fetch("/api/checkoutpage", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
