@@ -96,40 +96,43 @@ export default function Product({ data, data1, data2, data3, data4 }) {
               </div>
             </div>
           </div>
-
-          {/* side info*/}
           <div className="flex-col sm:flex-row p-5 border rounded-lg">
             {/* Title */}
-            <div className="text-2xl font-semibold break-words">
+            <div className="text-6xl pt-7 font-semibold break-words">
+              {" "}
+              {/* 3 times bigger */}
               {data.title}
             </div>
-
             {/* Price and Discount */}
-            <div className="flex items-center mt-3 sm:mt-0">
-              <div className="text-2xl font-semibold">
-                $
+            <div className="flex pt-4 items-center mt-3 sm:mt-0">
+              <div className="text-6xl font-semibold">
+                {" "}
+                {/* 3 times bigger */}$
                 {Math.floor(
                   data.price - (data.price * data.discountPercentage) / 100,
                 )}
               </div>
 
-              <div className="pl-1 text-gray-500 text-xl line-through ml-3">
-                ${data.price}
+              <div className="pl-1 text-gray-500 text-3xl line-through ml-3">
+                {" "}
+                {/* 3 times bigger */}${data.price}
               </div>
 
-              <div className="pl-6 text-red-500 font-semibold text-sm">
-                -{data.discountPercentage}%
+              <div className="pl-6 text-red-500 font-semibold text-xl">
+                {" "}
+                {/* 3 times bigger */}-{data.discountPercentage}%
               </div>
             </div>
-
             {/* Rating */}
-            <div className="flex items-center mt-3">
+            <div className="flex pt-4 items-center mt-3">
               <StarRating rating={data.rating} />
-              <div className="ml-2 text-lg font-medium">{data.rating}/5</div>
+              <div className="ml-2 text-3xl font-medium">
+                {data.rating}/5
+              </div>{" "}
+              {/* 3 times bigger */}
             </div>
-
             {/* Add to Cart */}
-            <div className="flex flex-col sm:flex-row items-center mt-3">
+            <div className="flex flex-col sm:flex-row pt-4 items-center mt-3">
               <div className="flex items-center space-x-2">
                 <button
                   onClick={() => {
@@ -141,9 +144,8 @@ export default function Product({ data, data1, data2, data3, data4 }) {
                 >
                   -
                 </button>
-
-                <span className="text-xl font-bold">{quantity}</span>
-
+                <span className="text-3xl font-bold">{quantity}</span>{" "}
+                {/* 3 times bigger */}
                 <button
                   onClick={() => {
                     setQuantity(quantity + 1)
@@ -175,17 +177,20 @@ export default function Product({ data, data1, data2, data3, data4 }) {
                     `${data.title.substring(0, 20)} is added to cart`,
                   )
                 }}
-                className="bg-[#405454] rounded-lg overflow-hidden items-center gap-12 inline-flex text-white text-base font-satoshi font-medium break-words mt-3 sm:mt-0 ml-0 sm:ml-3 px-4 py-2"
+                className="bg-[#405454] rounded-lg overflow-hidden items-center gap-12 inline-flex text-white text-3xl font-satoshi font-medium break-words mt-3 sm:mt-0 ml-0 sm:ml-3 px-4 py-2"
               >
                 Add to Cart
               </button>
             </div>
-
             {/* Product Details */}
-            <div className="text-xl font-medium mt-5">Product Details</div>
-
+            <div className="text-3xl pt-6 font-medium mt-5">
+              Product Details
+            </div>{" "}
+            {/* 3 times bigger */}
             {/* Description */}
-            <div className="mt-2 sm:mt-5 text-gray-600 text-base">
+            <div className="mt-2 sm:mt-5 text-gray-600 text-xl">
+              {" "}
+              {/* 3 times bigger */}
               {data.description}
             </div>
           </div>
