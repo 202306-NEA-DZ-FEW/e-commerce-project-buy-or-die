@@ -10,9 +10,13 @@ import {
 import Link from "next/link"
 import { addDoc, collection, getDocs } from "firebase/firestore"
 import { auth, db } from "@/Utils/firebase"
+import Image from "next/image"
+import { loadStripe } from "@stripe/stripe-js"
+import axios from "axios"
 
 function CartPage() {
   const productData = useSelector((state) => state.shopper.productData)
+  const stripePromise = loadStripe(process.env.stripe_public_key)
   const dispatch = useDispatch()
   const [totalOldPrice, setTotalOldPrice] = useState(0)
   const [totalSavings, setTotalSavings] = useState(0)
@@ -20,7 +24,7 @@ function CartPage() {
   const userInfo = useSelector((state) => state.shopper.userInfo)
 
   const cartCollectionRef = collection(db, "Cart")
-
+  console.log(userInfo?.email)
   const addcart = async (e) => {
     await addDoc(cartCollectionRef, {
       name: productData,
@@ -43,10 +47,33 @@ function CartPage() {
     setTotalAmt(amt)
   }, [productData])
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
     addcart()
-    dispatch(resetCart())
+    const stripe = await stripePromise
+
+    fetch("/api/checkoutpage", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        items: productData,
+        email: userInfo?.email,
+      }),
+    })
+      .then(function (response) {
+        return response.json()
+      })
+      .then(function (session) {
+        return stripe.redirectToCheckout({ sessionId: session.id })
+      })
+      .then(function (result) {
+        if (result.error) {
+          alert(result.error.message)
+        }
+      })
   }
+
   return (
     <div className="max-w-contentContainer mx-auto mr-[5%] ml-[10%]">
       <div className="w-full py-10">
@@ -211,17 +238,17 @@ function CartPage() {
                 </div>
                 <div className="w-full grid grid-cols-3 gap-4 text-xs">
                   <div className="w-full border border-zinc-400 rounded-md flex flex-col items-center justify-center gap-1 p-2">
-                    <img className="w-10" src={"shipping"} alt="shipping" />
+                    <img className="w-20" src="/dhl.png" alt="shipping" />
                     <p className="font-bold">DHL</p>
                     <p>Shipping available</p>
                   </div>
                   <div className="w-full border border-zinc-400 rounded-md flex flex-col items-center justify-center gap-1 p-2">
-                    <img className="w-10" src={"shipping"} alt="shipping" />
+                    <img className="w-10" src="/ups.png" alt="shipping" />
                     <p className="font-bold">UPS</p>
                     <p>Shipping available</p>
                   </div>
                   <div className="w-full border border-zinc-400 rounded-md flex flex-col items-center justify-center gap-1 p-2">
-                    <img className="w-10" src={"shipping"} alt="shipping" />
+                    <img className="w-10" src="/postal.svg" alt="shipping" />
                     <p className="font-bold">POSTAL</p>
                     <p>Shipping available</p>
                   </div>

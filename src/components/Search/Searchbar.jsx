@@ -41,7 +41,7 @@ const SearchComponent = () => {
     <div>
       <div
         ref={searchRef}
-        className="flex items-center bg-white border border-gray-300 rounded-xl p-1"
+        className="flex items-center bg-white border border-gray-300 rounded-xl p-1 bg-opacity-50"
       >
         <input
           type="text"
@@ -49,7 +49,7 @@ const SearchComponent = () => {
           onChange={(e) => setSearchTerm(e.target.value)}
           onKeyDown={handleKeyDown}
           placeholder="Enter search term"
-          className="flex-grow outline-none px-2"
+          className="flex-grow outline-none px-2 bg-transparent"
         />
         <button
           onClick={handleSearch}
