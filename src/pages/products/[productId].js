@@ -1,10 +1,30 @@
 import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 
+import toast, { Toaster } from "react-hot-toast"
+import {
+  deleteItem,
+  minusQuantity,
+  plusQuantity,
+  resetCart,
+  addToCart,
+} from "@/redux/shopperSlice"
 import ProductCard from "../../components/Cards/ProductCard"
 import Link from "next/link"
 import StarRating from "../../components/Cards/StarRating"
+
 export default function Product({ data, data1, data2, data3, data4 }) {
   const [mainImage, setmainImage] = useState(0)
+  const [quantity, setQuantity] = useState(1)
+  const dispatch = useDispatch()
+  const productData = useSelector((state) => state.shopper.productData)
+  const newprice = (
+    data.price -
+    (data.price * data.discountPercentage) / 100
+  ).toFixed(2)
+
+  const item = productData.map((item) => item)
+  console.log(item)
   return (
     <div
       style={{
@@ -167,20 +187,49 @@ export default function Product({ data, data1, data2, data3, data4 }) {
 
             <div className="flex p-10">
               <div className="flex items-center">
-                <button className="bg-blue-500 text-white px-2 py-1 rounded">
+                <button
+                  onClick={() => {
+                    if (quantity > 1) {
+                      setQuantity(quantity - 1)
+                    }
+                  }}
+                  className="bg-blue-500 text-white px-2 py-1 rounded"
+                >
                   -
                 </button>
-                <input
-                  type="number"
-                  value="1"
-                  className="border border-gray-300 px-2 py-1 rounded"
-                  readOnly
-                />
-                <button className="bg-blue-500 text-white px-2 py-1 rounded">
+                <span className="m-5 text-black text-bold">{quantity}</span>
+                <button
+                  onClick={() => {
+                    setQuantity(quantity + 1)
+                  }}
+                  className="bg-blue-500 text-white px-2 py-1 rounded"
+                >
                   +
                 </button>
               </div>
-              <button className="bg-green-500 text-white px-4 py-2 rounded ml-auto">
+              <button
+                onClick={() => {
+                  for (let i = 0; i < quantity; i++) {
+                    dispatch(
+                      addToCart({
+                        _id: data.id,
+                        title: data.title,
+                        image: data.thumbnail,
+                        newprice: newprice,
+                        discountPercentage: data.discountPercentage,
+                        rating: data.rating,
+                        stock: data.stock,
+                        quantity: 1,
+                        oldprice: data.price,
+                      }),
+                    )
+                  }
+                  toast.success(
+                    `${data.title.substring(0, 20)} is added to cart`,
+                  )
+                }}
+                className="bg-green-500 text-white px-4 py-2 rounded ml-auto"
+              >
                 Add to Cart
               </button>
             </div>
