@@ -95,6 +95,14 @@ const NavBar = () => {
               Products
             </Link>
           </li>
+          <li>
+            <Link
+              href="/aboutus"
+              className="font-bold hover:text-blue-500 hover:underline"
+            >
+              About Us
+            </Link>
+          </li>
         </ul>
         <div className="flex flex-row items-center ">
           <SearchComponent />
