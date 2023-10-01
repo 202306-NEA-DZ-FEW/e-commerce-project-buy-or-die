@@ -45,12 +45,12 @@ const Carousels = () => {
   return (
     <div className="flex justify-center pt-8 pb-40">
       {/* Display the carousel */}
-      <Carousel className="w-1/2 self-center ">
+      <Carousel className="w-1/2 self-center border border-gray-600 rounded-lg ">
         {/* Map over the product pairs and display each pair as a slide */}
         {productPairs.map((pair, index) => (
           <div
             key={index}
-            className="flex flex-row flex-wrap pl-28 justify-center gap-2"
+            className="flex pt-8 mb-1 flex-row flex-wrap pl-28 justify-center gap-2"
           >
             {/* Display the first product in the pair */}
             <LeftCard
