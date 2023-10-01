@@ -18,6 +18,7 @@ export default function Product({ data, data1, data2, data3, data4 }) {
   const [quantity, setQuantity] = useState(1)
   const dispatch = useDispatch()
   const productData = useSelector((state) => state.shopper.productData)
+
   const newprice = (
     data.price -
     (data.price * data.discountPercentage) / 100
@@ -34,13 +35,8 @@ export default function Product({ data, data1, data2, data3, data4 }) {
       }}
     >
       <div className="flex flex-row pt-8 justify-center items-center gap-2">
-        <div
-          style={{
-            border: "double",
-            borderRadius: "20px",
-          }}
-          className="flex gap-5 flex-col"
-        >
+        {/* the 3 side pics  */}
+        <div className="flex gap-5 flex-col">
           <img
             style={{
               width: "152px",
@@ -70,7 +66,10 @@ export default function Product({ data, data1, data2, data3, data4 }) {
             src={`${data.images[3]}`}
           />
         </div>
-        <div className="flex gap-3">
+
+        {/*pricipal pic and side info */}
+        <div className="flex flex-col md:flex-row gap-3">
+          {/* pricipal pic*/}
           <div className="flex mt-5 flex-col items-center">
             <img
               style={{
@@ -97,116 +96,64 @@ export default function Product({ data, data1, data2, data3, data4 }) {
               </div>
             </div>
           </div>
-          <div
-            className="border pl-10 ml-10 pt-20"
-            style={{
-              border: "double",
-              borderRadius: "20px",
-              width: "900px",
-            }}
-          >
-            <div
-              style={{
-                color: "black",
-                fontSize: "40px",
-                fontFamily: "Integral CF",
-                fontWeight: 700,
-                wordWrap: "break-word",
-                paddingLeft: "20px",
-              }}
-            >
-              {" "}
-              {data.title}{" "}
-            </div>
-            <div className="flex justify-between">
-              <div className="flex items-center">
-                <div
-                  style={{
-                    color: "black",
-                    fontSize: "32px",
-                    fontFamily: "Satoshi",
-                    fontWeight: 700,
-                    wordWrap: "break-word",
-                  }}
-                >
-                  ${" "}
-                  {Math.floor(
-                    data.price - (data.price * data.discountPercentage) / 100,
-                  )}
-                </div>
 
-                <div
-                  style={{
-                    color: "rgba(0, 0, 0, 0.30)",
-                    fontSize: "20px",
-                    fontFamily: "Satoshi",
-                    fontWeight: 700,
-                    textDecoration: "line-through",
-                    wordWrap: "break-word",
-                  }}
-                >
-                  ${data.price}
-                </div>
-                <div
-                  style={{
-                    color: "#FF3333",
-                    fontSize: "16px",
-                    fontFamily: "Satoshi",
-                    fontWeight: 500,
-                    wordWrap: "break-word",
-                  }}
-                >
-                  -{data.discountPercentage}%
-                </div>
-              </div>
-              <div className="flex items-center" style={{ gap: "16px" }}>
-                <StarRating rating={data.rating} />
-                <div>
-                  <span
-                    style={{
-                      color: "black",
-                      fontSize: "16px",
-                      fontFamily: "Satoshi",
-                    }}
-                  >
-                    {data.rating}/
-                  </span>
-                  <span
-                    style={{
-                      color: "rgba(0, 0, 0, 0.60)",
-                      fontSize: "16px",
-                      fontFamily: "Satoshi",
-                    }}
-                  >
-                    5
-                  </span>
-                </div>
-              </div>
-              <div></div>
+          {/* side info*/}
+          <div className="flex-col sm:flex-row p-5 border rounded-lg">
+            {/* Title */}
+            <div className="text-2xl font-semibold break-words">
+              {data.title}
             </div>
 
-            <div className="flex p-10">
-              <div className="flex items-center">
+            {/* Price and Discount */}
+            <div className="flex items-center mt-3 sm:mt-0">
+              <div className="text-2xl font-semibold">
+                $
+                {Math.floor(
+                  data.price - (data.price * data.discountPercentage) / 100,
+                )}
+              </div>
+
+              <div className="pl-1 text-gray-500 text-xl line-through ml-3">
+                ${data.price}
+              </div>
+
+              <div className="pl-6 text-red-500 font-semibold text-sm">
+                -{data.discountPercentage}%
+              </div>
+            </div>
+
+            {/* Rating */}
+            <div className="flex items-center mt-3">
+              <StarRating rating={data.rating} />
+              <div className="ml-2 text-lg font-medium">{data.rating}/5</div>
+            </div>
+
+            {/* Add to Cart */}
+            <div className="flex flex-col sm:flex-row items-center mt-3">
+              <div className="flex items-center space-x-2">
                 <button
                   onClick={() => {
                     if (quantity > 1) {
                       setQuantity(quantity - 1)
                     }
                   }}
-                  className="bg-blue-500 text-white px-2 py-1 rounded"
+                  className="bg-black text-white px-2 py-1 rounded"
                 >
                   -
                 </button>
-                <span className="m-5 text-black text-bold">{quantity}</span>
+
+                <span className="text-xl font-bold">{quantity}</span>
+
                 <button
                   onClick={() => {
                     setQuantity(quantity + 1)
                   }}
-                  className="bg-blue-500 text-white px-2 py-1 rounded"
+                  className="bg-black text-white px-2 py-1 rounded"
                 >
                   +
                 </button>
               </div>
+
               <button
                 onClick={() => {
                   for (let i = 0; i < quantity; i++) {
@@ -228,73 +175,31 @@ export default function Product({ data, data1, data2, data3, data4 }) {
                     `${data.title.substring(0, 20)} is added to cart`,
                   )
                 }}
-                className="bg-green-500 text-white px-4 py-2 rounded ml-auto"
+                className="bg-black rounded-lg overflow-hidden items-center gap-12 inline-flex text-white text-base font-satoshi font-medium break-words mt-3 sm:mt-0 ml-0 sm:ml-3 px-4 py-2"
               >
                 Add to Cart
               </button>
             </div>
 
-            <div
-              style={{
-                paddingLeft: "40px",
-                color: "rgba(0, 0, 0, 0.80)",
-                fontSize: "28px",
-                fontFamily: "Satoshi",
-                fontWeight: 400,
-                lineHeight: "22px",
-                wordWrap: "break-word",
-              }}
-            >
-              Product Details
-            </div>
-            <div
-              style={{
-                width: "590px",
-                color: "rgba(0, 0, 0, 0.60)",
-                paddingTop: "20px",
-                paddingLeft: "20px",
-                fontSize: "16px",
-                fontFamily: "Satoshi",
-                fontWeight: 400,
-                lineHeight: "22px",
-                wordWrap: "break-word",
-              }}
-            >
-              {" "}
-              {data.description}{" "}
+            {/* Product Details */}
+            <div className="text-xl font-medium mt-5">Product Details</div>
+
+            {/* Description */}
+            <div className="mt-2 sm:mt-5 text-gray-600 text-base">
+              {data.description}
             </div>
           </div>
         </div>
       </div>
 
       {/** Rcomended Items */}
-      <div className="flex flex-col items-center mt-20">
-        <div
-          style={{
-            paddingLeft: "0%",
-            color: "black",
-            fontSize: "40px",
-            fontFamily: "Integral CF",
-            fontWeight: 700,
-            wordWrap: "break-word",
-          }}
-        >
-          You may like !
+      <div className="container mx-auto mt-20">
+        <div className="text-4xl font-bold text-center mb-10">
+          You may like!
         </div>
 
-        <div
-          className="flex justify-evenly items-center"
-          style={{
-            borderTopLeftRadius: "20px",
-            borderTopRightRadius: "20px",
-            borderBottomColor: "transparent",
-            border: "double",
-            width: "90%",
-            gap: "40px",
-            paddingRight: "3%",
-          }}
-        >
-          <Link href={`/products/${data1.id}`}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-center">
+          <Link href={`/products/${data1.id}`} className="w-full">
             <ProductCard
               thumbnail={data1.thumbnail}
               price={data1.price}
@@ -303,7 +208,7 @@ export default function Product({ data, data1, data2, data3, data4 }) {
               rating={data1.rating}
             />
           </Link>
-          <Link href={`/products/${data2.id}`}>
+          <Link href={`/products/${data2.id}`} className="w-full">
             <ProductCard
               thumbnail={data2.thumbnail}
               price={data2.price}
@@ -312,7 +217,7 @@ export default function Product({ data, data1, data2, data3, data4 }) {
               rating={data2.rating}
             />
           </Link>
-          <Link href={`/products/${data3.id}`}>
+          <Link href={`/products/${data3.id}`} className="w-full">
             <ProductCard
               thumbnail={data3.thumbnail}
               price={data3.price}
@@ -321,7 +226,7 @@ export default function Product({ data, data1, data2, data3, data4 }) {
               rating={data3.rating}
             />
           </Link>
-          <Link href={`/products/${data4.id}`}>
+          <Link href={`/products/${data4.id}`} className="w-full">
             <ProductCard
               thumbnail={data4.thumbnail}
               price={data4.price}
