@@ -39,16 +39,29 @@ export const shopperslice = createSlice({
     },
     deleteItem: (state, action) => {
       state.productData = state.productData.filter(
-        (item) => item._id === action.payload._id,
+        (item) => item._id !== action.payload._id,
       )
     },
 
     resetCart: (state) => {
       state.productData = []
     },
+    addUser: (state, action) => {
+      state.userInfo = action.payload
+    },
+    removeUser: (state) => {
+      state.userInfo = null
+    },
   },
 })
 
-export const { addToCart, resetCart, deleteItem, minusQuantity, plusQuantity } =
-  shopperslice.actions
+export const {
+  addToCart,
+  resetCart,
+  deleteItem,
+  minusQuantity,
+  plusQuantity,
+  addUser,
+  removeUser,
+} = shopperslice.actions
 export default shopperslice.reducer

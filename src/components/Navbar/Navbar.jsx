@@ -6,12 +6,14 @@ import { auth } from "@/Utils/firebase"
 import { useState, useEffect } from "react"
 import SearchComponent from "../Search/Searchbar"
 import Dropdown from "../Dropdown"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { addUser, removeUser } from "@/redux/shopperSlice"
 
 const NavBar = () => {
   const productData = useSelector((state) => state.shopper.productData)
   const [user, setUser] = useState(null)
   const [totalAmt, setTotalAmt] = useState("")
+  const dispatch = useDispatch()
 
   useEffect(() => {
     let price = 0
@@ -25,6 +27,19 @@ const NavBar = () => {
   const handleSingOut = async () => {
     await signOut(auth)
   }
+  useEffect(() => {
+    if (user) {
+      dispatch(
+        addUser({
+          name: user?.displayName,
+          email: user?.email,
+          uid: user?.uid,
+        }),
+      )
+    } else {
+      dispatch(removeUser())
+    }
+  }, [user, dispatch])
 
   useEffect(() => {
     const logged = auth.onAuthStateChanged((user) => {
@@ -43,7 +58,7 @@ const NavBar = () => {
     <nav className="h-14 flex items-center bg-transparent text-black">
       <div
         style={{
-          filter: "drop-shadow(5px 25px 10px #000000)",
+          filter: "drop-shadow(5px 25px 60px #000000)",
           position: "fixed",
           width: "100%",
           zIndex: "9999",
