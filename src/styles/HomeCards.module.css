@@ -1,0 +1,16 @@
+@keyframes moveImage {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.moveImage {
+  animation: moveImage 20s infinite;
+  width: 100%;
+}
