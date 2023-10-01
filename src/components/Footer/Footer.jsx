@@ -1,21 +1,22 @@
 import React from "react"
 import Image from "next/image"
+import styles from "@/styles/Footer.module.css"
 
 const Footer = () => {
   return (
     <footer
-      className="py-6 "
+      className={`${styles.footerWidth} py-6`}
       style={{
         backgroundColor: "#C1DCDC",
         color: "#003F62",
         marginTop: "15px",
-        width: "104%",
+
         border: "double",
       }}
     >
       <div
         style={{ border: "" }}
-        className="container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50 rounded-lh"
+        className={`container px-6 mx-auto space-y-6 divide-y divide-gray-400 md:space-y-12 divide-opacity-50 rounded-lh`}
       >
         <div className="grid grid-cols-12">
           <div className="pb-6 col-span-full md:pb-0 md:col-span-6">
@@ -33,7 +34,7 @@ const Footer = () => {
               <li>
                 <a
                   rel="noopener noreferrer"
-                  href="#"
+                  href={`/products?category=Fashion`}
                   className="hover:dark:text-green-400"
                 >
                   Fashion
@@ -42,7 +43,7 @@ const Footer = () => {
               <li>
                 <a
                   rel="noopener noreferrer"
-                  href="#"
+                  href={`/products?category=Automotive`}
                   className="hover:dark:text-green-400"
                 >
                   Home decoration
@@ -51,7 +52,7 @@ const Footer = () => {
               <li>
                 <a
                   rel="noopener noreferrer"
-                  href="#"
+                  href={`/products?category=Electronics`}
                   className="hover:dark:text-green-400"
                 >
                   Electronics
@@ -74,7 +75,7 @@ const Footer = () => {
               <li>
                 <a
                   rel="noopener noreferrer"
-                  href="#"
+                  href={`/aboutus`}
                   className="hover:dark:text-green-400"
                 >
                   Our Team
@@ -83,7 +84,7 @@ const Footer = () => {
               <li>
                 <a
                   rel="noopener noreferrer"
-                  href="#"
+                  href="/checkout"
                   className="hover:dark:text-green-400"
                 >
                   Contact Us

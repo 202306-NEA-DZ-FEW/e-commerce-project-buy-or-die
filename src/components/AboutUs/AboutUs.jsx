@@ -15,11 +15,11 @@ export default function AboutCard() {
   return (
     <div className="flex items-center pl-8 justify-center h-screen">
       <div
-        className="relative flex flex-col rounded-xl text-custom-text-color shadow-lg md:max-w-4x1 md:flex-row"
+        className="relative flex flex-col rounded-xl text-custom-text-color shadow-lg md:flex-row"
         style={cardStyle}
       >
         <img
-          className="h-96 w-full md:h-auto md:w-60 md:rounded-none md:rounded-4-xl"
+          className="h-96 "
           src="https://media.discordapp.net/attachments/1133546889762054286/1157110671348084807/Screenshot_2023-09-27_201647.png?ex=65176aca&is=6516194a&hm=779fe20949ce921b945df106719905b59bf197135b88131a0e9294c61ebf144c&=&width=342&height=556"
           alt=""
           style={imageStyle}

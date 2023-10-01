@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/router"
 import { fetcher } from "@/Utils/API"
 import ProductCard from "@/components/Cards/ProductCard"
-import Link from "next/link"
 import Sidebar from "@/components/Filter/SideBar"
 import PriceFilter from "@/components/Filter/PriceFilter"
 import Pagination from "@/components/Pagination/Pagination"
@@ -194,8 +193,8 @@ const Products = ({ produ }) => {
       <LeftSideBar />
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-        <div class="col-span-2 md:col-span-1 lg:col-span-0 ">
-          <div class="bg-gray-300 p-10 h-full ">
+        <div class="">
+          <div class="bg-gray-300 p-10 h-full lg:flex flex-col hidden ">
             Sidebar
             <Sidebar />
             <div className="flex">
@@ -264,7 +263,7 @@ const Products = ({ produ }) => {
           <div class=" p-1">
             <div class="col-span-2">
               <div className="mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4 justify-center items-center">
+                <div className="grid 2xl:grid-cols-5 md:grid-cols-2 xl:grid-cols-3 lg:grid-cols-2 gap-4 justify-center items-center">
                   {displayedProducts.map((prods) => {
                     return (
                       <div key={prods.id}>

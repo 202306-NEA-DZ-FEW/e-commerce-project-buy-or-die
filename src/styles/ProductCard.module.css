@@ -1,0 +1,9 @@
+@media (max-width: 1350px) {
+  .card {
+    width: 90%;
+    height: 50%;
+  }
+  .pText {
+    font-size: 15px;
+  }
+}
