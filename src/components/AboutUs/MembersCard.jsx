@@ -1,5 +1,6 @@
 import React from "react"
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa"
+import styles from "@/styles/HomeCards.module.css"
 
 export default function MembersCard() {
   const posts = [
@@ -60,7 +61,7 @@ export default function MembersCard() {
   ]
 
   return (
-    <div className="min-h-screen p-4">
+    <div className="min-h-screen ml-4 pl-4 pb-4">
       <style>
         {`
                 .card {
@@ -75,7 +76,7 @@ export default function MembersCard() {
           <div className="w-full rounded-lg shadow-md card" key={key}>
             <div className="h-96 overflow-hidden">
               <img
-                className="w-full h-full object-cover"
+                className={`object-cover ${styles.moveImage}`}
                 src={items.img}
                 alt="image"
               />

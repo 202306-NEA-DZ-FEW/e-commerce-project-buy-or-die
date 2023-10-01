@@ -1,0 +1,13 @@
+@media (max-width: 920px) {
+  .randomImage1 {
+    width: 150px;
+    height: 300px;
+  }
+  .randomImage {
+    width: 150px;
+    height: 300px;
+  }
+  .randomWidth {
+    height: 630px;
+  }
+}

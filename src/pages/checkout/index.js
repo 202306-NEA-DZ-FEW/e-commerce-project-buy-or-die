@@ -40,7 +40,7 @@ const CheckoutForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+    <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-10">
       <label htmlFor="firstName" className="block mb-2">
         First Name:
       </label>
