@@ -13,8 +13,18 @@ export default function LeftCard({
   return (
     <div className="flex-auto flex-col z-50 transition duration-300 ease-in-out hover:scale-110">
       <Link href={`/products/${pid}`}>
-        <div className="w-44 h-44 text-xs cursor-pointer flex flex-col rounded-s-xl bg-white md:max-w-xl md:flex-row">
-          <div className="p-2 flex flex-col text-xs bg-white flex-grow rounded-e-xl">
+        <div
+          style={{
+            filter: "drop-shadow(5px 39px 10px #000000)",
+          }}
+          className="w-44 h-44 text-xs cursor-pointer flex flex-col rounded-s-xl bg-white md:max-w-xl md:flex-row"
+        >
+          <div
+            style={{
+              filter: "drop-shadow(5px 39px 10px #000000)",
+            }}
+            className="p-2 flex flex-col text-xs bg-white flex-grow rounded-s-xl"
+          >
             <h5 className="font-medium w-28 text-teal-500 border rounded-xl flex items-center justify-center">
               {title}
             </h5>
@@ -27,8 +37,6 @@ export default function LeftCard({
           </div>
           <img
             style={{
-              filter: "drop-shadow(5px 39px 10px #000000)",
-
               animationDelay: "200ms",
               borderTopRightRadius: "var(--br-x) var(--br-y)",
               "--br-x": "100px",
