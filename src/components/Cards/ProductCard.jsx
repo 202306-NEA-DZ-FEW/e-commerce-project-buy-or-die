@@ -73,6 +73,7 @@ const ProductCard = ({
                     rating: rating,
                     stock: stock,
                     quantity: 1,
+                    oldprice: price,
                   }),
                 ) && toast.success(`${title.substring(0, 20)} is added to cart`)
               }

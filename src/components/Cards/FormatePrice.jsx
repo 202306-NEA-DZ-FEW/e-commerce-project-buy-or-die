@@ -1,6 +1,4 @@
-import React from "react"
-
-export const FormatePrice = ({ amount }) => {
+const FormatePrice = ({ amount }) => {
   const formattedAmount = new Number(amount).toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
@@ -8,3 +6,5 @@ export const FormatePrice = ({ amount }) => {
   })
   return <span>{formattedAmount}</span>
 }
+
+export default FormatePrice
