@@ -45,7 +45,7 @@ const Carousels = () => {
   return (
     <div className="flex justify-center pt-8 pb-40">
       {/* Display the carousel */}
-      <Carousel className="w-1/2 self-center border border-gray-600 rounded-lg ">
+      <Carousel className="w-[75%] self-center rounded-lg ">
         {/* Map over the product pairs and display each pair as a slide */}
         {productPairs.map((pair, index) => (
           <div

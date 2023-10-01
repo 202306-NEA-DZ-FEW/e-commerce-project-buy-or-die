@@ -10,8 +10,6 @@ const Footer = () => {
         backgroundColor: "#C1DCDC",
         color: "#003F62",
         marginTop: "15px",
-
-        border: "double",
       }}
     >
       <div

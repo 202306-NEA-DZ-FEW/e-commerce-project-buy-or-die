@@ -137,7 +137,7 @@ export default function Product({ data, data1, data2, data3, data4 }) {
                       setQuantity(quantity - 1)
                     }
                   }}
-                  className="bg-black text-white px-2 py-1 rounded"
+                  className="bg-[#405454] text-white px-2 py-1 rounded"
                 >
                   -
                 </button>
@@ -148,7 +148,7 @@ export default function Product({ data, data1, data2, data3, data4 }) {
                   onClick={() => {
                     setQuantity(quantity + 1)
                   }}
-                  className="bg-black text-white px-2 py-1 rounded"
+                  className="bg-[#405454] text-white px-2 py-1 rounded"
                 >
                   +
                 </button>
@@ -175,7 +175,7 @@ export default function Product({ data, data1, data2, data3, data4 }) {
                     `${data.title.substring(0, 20)} is added to cart`,
                   )
                 }}
-                className="bg-black rounded-lg overflow-hidden items-center gap-12 inline-flex text-white text-base font-satoshi font-medium break-words mt-3 sm:mt-0 ml-0 sm:ml-3 px-4 py-2"
+                className="bg-[#405454] rounded-lg overflow-hidden items-center gap-12 inline-flex text-white text-base font-satoshi font-medium break-words mt-3 sm:mt-0 ml-0 sm:ml-3 px-4 py-2"
               >
                 Add to Cart
               </button>
