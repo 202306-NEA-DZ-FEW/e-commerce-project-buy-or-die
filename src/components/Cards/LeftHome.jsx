@@ -15,13 +15,13 @@ export default function LeftCard({
       <Link href={`/products/${pid}`}>
         <div
           style={{
-            filter: "drop-shadow(-5px 39px 10px #000000)",
+            filter: "drop-shadow(-2px 20px 50px #000000)",
             borderTopLeftRadius: "var(--br-x) var(--br-y)",
             "--br-x": "100px",
             "--br-y": "200px",
             borderBottomLeftRadius: "40px",
           }}
-          className="w-44 h-44 text-xs cursor-pointer flex flex-col rounded-s-xl bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] md:max-w-xl md:flex-row"
+          className="w-[160px] h-[160px] text-xs cursor-pointer flex flex-row rounded-s-xl bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] "
         >
           <img
             style={{

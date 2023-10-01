@@ -112,7 +112,7 @@ const RandomImages = () => {
                       alt=""
                       src={currentImages[0]}
                     />
-                    <b className="pt-7">LUXURIOUS</b>
+                    <b className="pt-7 text-black">LUXURIOUS</b>
                   </div>
                   <div
                     className="flex flex-col items-center"
@@ -129,7 +129,7 @@ const RandomImages = () => {
                       alt=""
                       src={currentImages[2]}
                     />
-                    <b className="pt-7">REVOLUTIONARY</b>
+                    <b className="pt-7 text-black">REVOLUTIONARY</b>
                   </div>
                 </div>
               </div>
@@ -148,7 +148,7 @@ const RandomImages = () => {
                   alt=""
                   src={currentImages[1]}
                 />
-                <b className="pt-7">EFFICIENT</b>
+                <b className="pt-7 text-black">EFFICIENT</b>
               </div>
             </div>
           </div>
