@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import styles from "@/styles/HomeCards.module.css"
 
 import HomeButton from "./HomeButton"
 
@@ -54,7 +55,7 @@ export default function HomeCard() {
                   }`}
                 >
                   <img
-                    className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
+                    className={`block overflow-auto ${styles.moveImage}`}
                     src="/images/bb.jpg"
                     alt="Image 1"
                   />
@@ -65,7 +66,7 @@ export default function HomeCard() {
                   }`}
                 >
                   <img
-                    className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
+                    className={`block overflow-auto ${styles.moveImage}`}
                     src="/images/nn.png"
                     alt="Image 2"
                   />
@@ -76,7 +77,7 @@ export default function HomeCard() {
                   }`}
                 >
                   <img
-                    className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
+                    className={`block overflow-auto ${styles.moveImage}`}
                     src="/images/ww.jpg"
                     alt="Image 3"
                   />
@@ -87,7 +88,7 @@ export default function HomeCard() {
                   }`}
                 >
                   <img
-                    className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
+                    className={`block overflow-auto ${styles.moveImage}`}
                     src="/images/3dyFAn.webp"
                     alt="Image 4"
                   />
@@ -98,7 +99,7 @@ export default function HomeCard() {
                   }`}
                 >
                   <img
-                    className="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
+                    className={`block overflow-auto ${styles.moveImage}`}
                     src="/images/4902587.jpg"
                     alt="Image 5"
                   />
