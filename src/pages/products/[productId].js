@@ -9,7 +9,7 @@ import {
   resetCart,
   addToCart,
 } from "@/redux/shopperSlice"
-import ProductCard from "../../components/Cards/ProductCard"
+import ItemCard from "../../components/Cards/ItemCard"
 import Link from "next/link"
 import StarRating from "../../components/Cards/StarRating"
 
@@ -200,7 +200,7 @@ export default function Product({ data, data1, data2, data3, data4 }) {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 justify-center">
           <Link href={`/products/${data1.id}`} className="w-full">
-            <ProductCard
+            <ItemCard
               thumbnail={data1.thumbnail}
               price={data1.price}
               discountPercentage={data1.discountPercentage}
@@ -209,7 +209,7 @@ export default function Product({ data, data1, data2, data3, data4 }) {
             />
           </Link>
           <Link href={`/products/${data2.id}`} className="w-full">
-            <ProductCard
+            <ItemCard
               thumbnail={data2.thumbnail}
               price={data2.price}
               discountPercentage={data2.discountPercentage}
@@ -218,7 +218,7 @@ export default function Product({ data, data1, data2, data3, data4 }) {
             />
           </Link>
           <Link href={`/products/${data3.id}`} className="w-full">
-            <ProductCard
+            <ItemCard
               thumbnail={data3.thumbnail}
               price={data3.price}
               discountPercentage={data3.discountPercentage}
@@ -227,7 +227,7 @@ export default function Product({ data, data1, data2, data3, data4 }) {
             />
           </Link>
           <Link href={`/products/${data4.id}`} className="w-full">
-            <ProductCard
+            <ItemCard
               thumbnail={data4.thumbnail}
               price={data4.price}
               discountPercentage={data4.discountPercentage}
