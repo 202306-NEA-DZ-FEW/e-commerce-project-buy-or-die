@@ -23,7 +23,7 @@ export default function HomeCard() {
       style={{
         marginTop: "30px",
         width: "104%",
-        border: "double",
+        border: "",
         borderRadius: "5px",
       }}
     >
@@ -37,9 +37,7 @@ export default function HomeCard() {
                 left: "15%",
                 filter: "drop-shadow(-20px 20px 10px #405454)",
               }}
-            >
-              <HomeButton />
-            </div>
+            ></div>
             <div
               id="indicators-carousel"
               className="relative"
@@ -47,7 +45,7 @@ export default function HomeCard() {
             >
               <div
                 className="overflow-hidden -z-50 relative"
-                style={{ height: "450px" }}
+                style={{ height: "550px" }}
               >
                 <div
                   className={`duration-700 ease-in-out absolute inset-0 transition-all transform ${
