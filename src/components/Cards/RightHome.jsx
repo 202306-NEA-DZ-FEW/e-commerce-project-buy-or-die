@@ -1,7 +1,7 @@
 import React from "react"
 import Link from "next/link"
 
-export default function LeftCard({
+export default function RightCard({
   pid,
   thumbnail,
   price,
@@ -15,16 +15,11 @@ export default function LeftCard({
       <Link href={`/products/${pid}`}>
         <div
           style={{
-            filter: "drop-shadow(5px 39px 10px #000000)",
+            filter: "drop-shadow(2px 20px 50px #000000)",
           }}
-          className="w-44 h-44 text-xs cursor-pointer flex flex-col rounded-s-xl bg-white md:max-w-xl md:flex-row"
+          className="w-[160px] h-[160px] text-xs cursor-pointer flex flex-row rounded-s-xl bg-white md:max-w-xl"
         >
-          <div
-            style={{
-              filter: "drop-shadow(5px 39px 10px #000000)",
-            }}
-            className="p-2 flex flex-col text-xs bg-white flex-grow rounded-s-xl"
-          >
+          <div className="p-2 flex flex-col text-xs bg-white flex-grow rounded-s-xl">
             <h5 className="font-medium w-28 text-teal-500 border rounded-xl flex items-center justify-center">
               {title}
             </h5>

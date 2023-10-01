@@ -1,83 +1,127 @@
 import React, { useEffect, useState } from "react"
 import { fetcher } from "@/Utils/API"
-import { Carousel } from "react-responsive-carousel"
-import "react-responsive-carousel/lib/styles/carousel.min.css"
-import RightCard from "./Cards/RightHome"
-import LeftCard from "./Cards/LeftHome"
+import RightCard from "@/components/Cards/RightHome"
+import LeftCard from "@/components/Cards/LeftHome"
+import styles from "@/styles/Carousel.module.css"
 
 const Carousels = () => {
-  // State to store the products, loading state, and error state
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [currentSlide, setCurrentSlide] = useState(0)
 
   useEffect(() => {
-    // Fetch the products data
     const fetchData = async () => {
-      try {
-        // Call the fetcher function to fetch the products from the API
-        const data = await fetcher("products")
-
-        // Set the products state with the fetched data
-        setProducts(data.products)
-
-        // Set the loading state to false to indicate that the data has been fetched
-        setLoading(false)
-      } catch (error) {
-        // Set the error state if an error occurs during the fetch
-        setError(error)
-
-        // Set the loading state to false to indicate that the data fetching process is complete
-        setLoading(false)
-      }
+      const data = await fetcher("products")
+      setProducts(data.products)
+      setLoading(false)
     }
 
-    // Call the fetchData function when the component mounts
     fetchData()
   }, [])
 
-  const productPairs = []
-  for (let i = 0; i < products.length; i += 2) {
-    const pair = products.slice(i, i + 2)
-    productPairs.push(pair)
+  const handleNextSlide = () => {
+    setCurrentSlide(
+      (prevSlide) => (prevSlide + 1) % Math.ceil(products.length / 2),
+    )
+  }
+
+  const handlePrevSlide = () => {
+    setCurrentSlide(
+      (prevSlide) =>
+        (prevSlide - 1 + Math.ceil(products.length / 2)) %
+        Math.ceil(products.length / 2),
+    )
   }
 
   return (
-    <div className="flex justify-center pt-8 pb-40">
-      {/* Display the carousel */}
-      <Carousel className="w-[75%] self-center rounded-lg ">
-        {/* Map over the product pairs and display each pair as a slide */}
-        {productPairs.map((pair, index) => (
-          <div
-            key={index}
-            className="flex pt-8 mb-1 flex-row flex-wrap pl-28 justify-center gap-2"
+    <div>
+      <div className="flex justify-center items-end pt-10 pb-[180px] ">
+        <div className="flex justify-center items-center">
+          <button
+            type="button"
+            className="pr-[20px]"
+            data-carousel-prev=""
+            onClick={handlePrevSlide}
           >
-            {/* Display the first product in the pair */}
-            <LeftCard
-              title={pair[0].title}
-              thumbnail={pair[0].thumbnail}
-              price={pair[0].price}
-              rating={pair[0].rating}
-              discountPercentage={pair[0].discountPercentage}
-              description={pair[0].description}
-              pid={pair[0].id}
-            />
-
-            {/* Check if there is a second product in the pair */}
-            {pair[1] && (
-              <RightCard
-                title={pair[1].title}
-                thumbnail={pair[1].thumbnail}
-                price={pair[1].price}
-                rating={pair[1].rating}
-                discountPercentage={pair[1].discountPercentage}
-                description={pair[1].description}
-                pid={pair[1].id}
-              />
-            )}
+            <span className="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+              <svg
+                className="w-5 h-5 text-white sm:w-6 sm:h-6  dark:text-gray-800"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7"
+                ></path>
+              </svg>
+              <span className="hidden">Previous</span>
+            </span>
+          </button>
+          <div className={`${styles.diffGap} flex gap-96`}>
+            {products.map((product, index) => {
+              if (index === currentSlide) {
+                return (
+                  <React.Fragment key={product.id}>
+                    <LeftCard
+                      pid={product.id}
+                      thumbnail={product.thumbnail}
+                      price={product.price}
+                      discountPercentage={product.discountPercentage}
+                      title={product.title}
+                      rating={product.rating}
+                      description={product.description}
+                    />
+                  </React.Fragment>
+                )
+              } else if (index === currentSlide + 1) {
+                return (
+                  <React.Fragment key={product.id}>
+                    <RightCard
+                      pid={product.id}
+                      thumbnail={product.thumbnail}
+                      price={product.price}
+                      discountPercentage={product.discountPercentage}
+                      title={product.title}
+                      rating={product.rating}
+                      description={product.description}
+                    />
+                  </React.Fragment>
+                )
+              }
+              return null
+            })}
           </div>
-        ))}
-      </Carousel>
+          <button
+            type="button"
+            className="pl-36 h-full cursor-pointer group focus:outline-none"
+            data-carousel-next=""
+            onClick={handleNextSlide}
+          >
+            <span className="inline-flex justify-center items-center rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+              <svg
+                className="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                ></path>
+              </svg>
+              <span className="hidden">Next</span>
+            </span>
+          </button>
+        </div>
+      </div>
     </div>
   )
 }
