@@ -12,7 +12,6 @@ import { addDoc, collection, getDocs } from "firebase/firestore"
 import { auth, db } from "@/Utils/firebase"
 import Image from "next/image"
 import { loadStripe } from "@stripe/stripe-js"
-import axios from "axios"
 
 function CartPage() {
   const productData = useSelector((state) => state.shopper.productData)

@@ -6,7 +6,6 @@ const SizeList = () => {
 
   const handleSizeClick = (size) => {
     setSelectedSize(size)
-    // You can add additional logic here, e.g., filtering products by size
   }
 
   return (

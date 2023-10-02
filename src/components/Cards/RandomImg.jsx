@@ -54,9 +54,9 @@ const RandomImages = () => {
           fontWeight: 400,
           lineHeight: "22px",
           wordWrap: "break-word",
-          width: "1000px",
+          width: "70%",
         }}
-        className={`${styles.randomWidth} flex justify-center relative mb-40 mt-10 rounded-lg bg-[#C1DCDC]`}
+        className={`${styles.randomWidth} flex justify-center relative mb-40 mt-20 rounded-lg bg-[#C1DCDC]`}
       >
         <div className="flex flex-col relative  items-center text-13xl">
           <div className="flex flex-col mt-5 items-center ">
@@ -78,7 +78,7 @@ const RandomImages = () => {
 
           <div
             style={{
-              height: "700px",
+              height: "500px",
               borderBottomLeftRadius: "var(--br-x) var(--br-y)",
               "--br-x": "100px",
               "--br-y": "100px",
@@ -101,7 +101,7 @@ const RandomImages = () => {
                   <div
                     className="flex flex-col items-center"
                     style={{
-                      filter: "drop-shadow(-10px 19px 10px #000000)",
+                      filter: "drop-shadow(-10px 19px 20px #000000)",
                       bottom: "100px",
                       animation: "fly 5s linear infinite",
                       transition: "opacity 0.3s ease-in-out",
@@ -117,7 +117,7 @@ const RandomImages = () => {
                   <div
                     className="flex flex-col items-center"
                     style={{
-                      filter: "drop-shadow(10px 19px 10px #000000)",
+                      filter: "drop-shadow(10px 19px 20px #000000)",
                       bottom: "100px",
                       animation: "fly 5s linear infinite",
                       transition: "opacity 0.3s ease-in-out",
@@ -136,11 +136,14 @@ const RandomImages = () => {
               <div
                 className="flex flex-col items-center"
                 style={{
-                  filter: "drop-shadow(0px 19px 10px #000000)",
-                  bottom: "300px",
+                  filter: "drop-shadow(0px 19px 20px #000000)",
+                  paddingTop: "30%",
+                  marginLeft: "36%",
                   animation: "fly 5s linear infinite",
                   transition: "opacity 0.3s ease-in-out",
                   animationDelay: "200ms",
+                  position: "absolute",
+                  top: 0,
                 }}
               >
                 <img
