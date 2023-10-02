@@ -116,7 +116,7 @@ export default function ProductForm() {
         {error && <p className="text-red-500">{error}</p>}
         <button
           type="submit"
-          className="bg-green-500 text-white rounded px-4 py-2 hover:bg-green-600 transition duration-300 ease-in-out"
+          className="bg-[#405454] text-white rounded px-4 py-2 hover:bg-green-600 transition duration-300 ease-in-out"
         >
           Add Product
         </button>

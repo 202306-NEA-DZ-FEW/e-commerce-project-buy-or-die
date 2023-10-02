@@ -4,15 +4,18 @@ import Carousels from "@/components/Carousel"
 import RandomImages from "@/components/Cards/RandomImg"
 import Green from "@/components/Green"
 import RandomCategories from "@/components/Cards/RandomCategory"
+import LoadingComponent from "@/components/LoadingComponent"
 
 const HomePage = () => {
   return (
     <div>
-      <HomeCard />
-      <Green />
-      <RandomCategories />
-      <Carousels />
-      <RandomImages />
+      <LoadingComponent>
+        <HomeCard />
+        <Green />
+        <RandomCategories />
+        <Carousels />
+        <RandomImages />
+      </LoadingComponent>
     </div>
   )
 }

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react"
 import CartPage from "@/components/CartComponent/CartPage"
+import LoadingComponent from "@/components/LoadingComponent"
 
 function cart() {
   return (
-    <div>
-      <CartPage />
-    </div>
+    <LoadingComponent>
+      <div>
+        <CartPage />
+      </div>
+    </LoadingComponent>
   )
 }
 
