@@ -71,7 +71,7 @@ const Dropdown = () => {
               </button>
             ) : (
               <button className="px-2 py-2 border border-t-transparent border-r-transparent border-l-transparent hover:bg-gray-100">
-                SignIn/SignUp
+                <Link href="/login">SignIn/SignUp</Link>
               </button>
             )}
           </ul>

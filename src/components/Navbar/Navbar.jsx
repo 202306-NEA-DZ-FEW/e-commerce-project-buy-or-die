@@ -112,6 +112,18 @@ const NavBar = () => {
               About Us
             </Link>
           </li>
+          {user?.displayName === "Admin" ? (
+            <li>
+              <Link
+                href="/addproduct"
+                className="font-bold hover:text-blue-500 hover:underline"
+              >
+                AddProduct
+              </Link>
+            </li>
+          ) : (
+            <div></div>
+          )}
         </ul>
         <div className="flex flex-row items-center ">
           <SearchComponent />
