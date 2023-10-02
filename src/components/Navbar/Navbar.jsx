@@ -8,12 +8,19 @@ import SearchComponent from "../Search/Searchbar"
 import Dropdown from "../Dropdown"
 import { useDispatch, useSelector } from "react-redux"
 import { addUser, removeUser } from "@/redux/shopperSlice"
+import Cata from "@/components/Filter/Cata"
+import LeftSideBar from "../Filter/LeftSideBar"
 
 const NavBar = () => {
   const productData = useSelector((state) => state.shopper.productData)
   const [user, setUser] = useState(null)
   const [totalAmt, setTotalAmt] = useState("")
   const dispatch = useDispatch()
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen)
+  }
 
   useEffect(() => {
     let price = 0
@@ -66,8 +73,10 @@ const NavBar = () => {
         className=" flex justify-between border bg-white bg-opacity-30 rounded-3xl items-center w-full"
       >
         <div className="flex ">
-          <button className="bg-transparent text-black rounded-full">
-            <Image src="/FilterRight.svg" alt="List" width={50} height={50} />
+          <button className="ml-4 bg-transparent text-black rounded-full">
+            <div>
+              <Cata toggleSidebar={toggleSidebar} />
+            </div>
           </button>
           <Image
             className="ml-20"
