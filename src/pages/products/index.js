@@ -7,6 +7,9 @@ import Sidebar from "@/components/Filter/SideBar"
 import PriceFilter from "@/components/Filter/PriceFilter"
 import Pagination from "@/components/Pagination/Pagination"
 import ColorList from "@/components/Filter/Color"
+import "font-awesome/css/font-awesome.min.css"
+import Link from "next/link"
+import SizeList from "@/components/Filter/SizeList"
 
 const Products = ({ produ }) => {
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false)
@@ -194,8 +197,7 @@ const Products = ({ produ }) => {
 
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         <div class="">
-          <div class="bg-gray-300 p-10 h-full lg:flex flex-col hidden ">
-            Sidebar
+          <div class="bg-[#a7c7c7] h-full w-3/4 p-10  lg:flex flex-col hidden mt-4">
             <Sidebar />
             <div className="flex">
               <PriceFilter
@@ -206,7 +208,10 @@ const Products = ({ produ }) => {
               />
             </div>
             {category === "Fashion" || Fashion.includes(category) ? (
-              <ColorList className="bg-gray-300 p-10 h-full" />
+              <div>
+                <SizeList />{" "}
+                <ColorList className="bg-gray-300 p-10 h-full border border-gray-300" />
+              </div>
             ) : (
               <div></div>
             )}
@@ -214,9 +219,13 @@ const Products = ({ produ }) => {
         </div>
         <div class="col-span-2 md:col-span-2 lg:col-span-3 mt-10 ">
           <div className="container grid grid-cols-2 p-2 text-black rounded-full ">
-            <div className="menu col-span-2 md:col-span-1 lg:col-span-1 ml-20 ">
+            <div className="menu col-span-2 md:col-span-1 lg:col-span-1 ml-10 ">
               <div className="title">
                 <p className="font-bold">
+                  <Link href="/">Home</Link>{" "}
+                  <span className="separator">|</span>{" "}
+                  <Link href="/products">All</Link>{" "}
+                  <span className="separator">|</span>{" "}
                   {category ? category.toUpperCase() : "All"}
                 </p>
               </div>
@@ -263,7 +272,7 @@ const Products = ({ produ }) => {
           <div class=" p-1">
             <div class="col-span-2">
               <div className="mx-auto">
-                <div className="grid 2xl:grid-cols-5 md:grid-cols-2 xl:grid-cols-3 lg:grid-cols-2 gap-4 justify-center items-center">
+                <div className="ml-[-70px] grid 2xl:grid-cols-5 md:grid-cols-2 xl:grid-cols-3 lg:grid-cols-2 gap-4 justify-center items-center">
                   {displayedProducts.map((prods) => {
                     return (
                       <div key={prods.id}>

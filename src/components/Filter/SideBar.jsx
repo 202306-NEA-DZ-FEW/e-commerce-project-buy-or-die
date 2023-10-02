@@ -49,14 +49,14 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="bg-gray-200 w-64 p-4">
-      <h2 className="text-lg font-semibold">Categories</h2>
+    <div className=" w-64 p-4">
+      <h2 className="text-lg font-bold mb-5">Categories</h2>
       <ul>
         {categories.map((category, index) => (
           <li key={index}>
             <button
               onClick={() => handleCategoryClick(category.name)}
-              className="w-full text-left py-2 px-4 hover:bg-gray-300"
+              className="font-bold w-full text-left py-2 px-4 "
             >
               {category.name}
             </button>

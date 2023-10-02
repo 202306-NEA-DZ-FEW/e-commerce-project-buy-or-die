@@ -21,7 +21,7 @@ const ColorList = () => {
   }
 
   return (
-    <div className="bg-gray-200 w-64 p-4">
+    <div className=" w-64 p-4">
       <div className="flex">
         <div className="flex flex-row-reverse gap-24">
           <Image
