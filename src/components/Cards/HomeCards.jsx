@@ -81,6 +81,17 @@ export default function HomeCard() {
                   />
                 </div>
                 <div
+                  className={`duration-900 ease-in-out absolute inset-0 transition-all transform ${
+                    activeSlide === 0 ? "translate-x-0" : "-translate-x-full"
+                  }`}
+                >
+                  <img
+                    className={`block overflow-auto ${styles.moveImage}`}
+                    src="/images/tt.png"
+                    alt="Image 9"
+                  />
+                </div>
+                <div
                   className={`duration-700 ease-in-out absolute inset-0 transition-all transform ${
                     activeSlide === 3 ? "translate-x-0" : "-translate-x-full"
                   }`}
