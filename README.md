@@ -1,8 +1,8 @@
-![Example Image](https://imgur.com/44mNzIZ)
-![Example Image](https://imgur.com/mdEghpR)
-![Example Image](https://imgur.com/f8OPojg)
-![Example Image](https://imgur.com/P4L60JJ)
-![Example Image](https://imgur.com/1V4kQGc)
+!(https://imgur.com/44mNzIZ)
+!(https://imgur.com/mdEghpR)
+!(https://imgur.com/f8OPojg)
+!(https://imgur.com/P4L60JJ)
+!(https://imgur.com/1V4kQGc)
 
 # Sougna - E-commerce Project
 
