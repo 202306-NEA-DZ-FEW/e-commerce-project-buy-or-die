@@ -1,8 +1,8 @@
-!(https://imgur.com/44mNzIZ)
-!(https://imgur.com/mdEghpR)
-!(https://imgur.com/f8OPojg)
-!(https://imgur.com/P4L60JJ)
-!(https://imgur.com/1V4kQGc)
+![](https://i.imgur.com/44mNzIZ.png)
+![](https://i.imgur.com/mdEghpR.png)
+![](https://i.imgur.com/f8OPojg.png)
+![](https://i.imgur.com/P4L60JJ.png)
+![](https://i.imgur.com/1V4kQGc.png)
 
 # Sougna - E-commerce Project
 
